@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.thomasgeslin.trackbay",
+      "sha256_cert_fingerprints": [
+        "4A:1A:45:7E:67:02:09:F9:BD:E0:54:A7:2C:10:0F:68:BF:DF:BB:34:77:86:87:70:F7:BC:63:B9:FD:52:08:55"
+      ]
+    }
+  }
+]

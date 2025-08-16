@@ -1,0 +1,11 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appID": "TMNZPHDUCY.com.thomasgeslin.trackbay",
+        "paths": [ "/pages/SignUpConfirmation", "/pages/ResetPassword" ]
+      }
+    ]
+  }
+}
