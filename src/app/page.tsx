@@ -1,6 +1,6 @@
 'use client';
 
-import Image from 'next/image';
+import Image, { StaticImageData } from 'next/image';
 import Link from 'next/link';
 import { motion, type Variants } from 'framer-motion';
 
@@ -18,7 +18,7 @@ const fadeUp: Variants = {
   show: (i: number = 0) => ({
     opacity: 1,
     y: 0,
-    transition: { duration: DURATION, ease: easeInOut, delay: i * 0.15 },
+    transition: { duration: DURATION, ease: easeInOut, delay: i * 0.3 },
   }),
 };
 
@@ -32,7 +32,7 @@ const fadeRight: Variants = {
 };
 
 const zoomInSoft: Variants = {
-  hidden: { opacity: 0, scale: 0.98 },
+  hidden: { opacity: 0, scale: 0.9 },
   show: {
     opacity: 1,
     scale: 1,
@@ -42,7 +42,7 @@ const zoomInSoft: Variants = {
 
 const stagger: Variants = {
   hidden: { opacity: 1 },
-  show: { transition: { staggerChildren: 0.12, delayChildren: 0.05 } },
+  show: { transition: { staggerChildren: 0.25, delayChildren: 0.1 } },
 };
 
 const item: Variants = {
@@ -77,40 +77,142 @@ const accents = [
   },
 ] as const;
 
-/* ---------- Step accents ---------- */
-type Accent = 'orange' | 'indigo' | 'teal';
+/* ---------- Subcomponents ---------- */
+function Feature({
+  title,
+  desc,
+  i,
+}: {
+  title: string;
+  desc: string;
+  i: number;
+}) {
+  const a = accents[i % accents.length];
 
-const stepAccents: Record<
-  Accent,
-  {
-    badge: string;
-    ring: string;
-    glow: string;
-  }
-> = {
-  orange: {
-    badge: 'from-orange-500 to-rose-500',
-    ring: 'ring-1 ring-orange-200/40 dark:ring-orange-300/20',
-    glow: 'hover:shadow-[0_10px_30px_-10px_rgba(255,140,80,0.35)]',
-  },
-  indigo: {
-    badge: 'from-indigo-500 to-cyan-500',
-    ring: 'ring-1 ring-indigo-200/40 dark:ring-indigo-300/20',
-    glow: 'hover:shadow-[0_10px_30px_-10px_rgba(99,102,241,0.35)]',
-  },
-  teal: {
-    badge: 'from-teal-500 to-emerald-500',
-    ring: 'ring-1 ring-teal-200/40 dark:ring-teal-300/20',
-    glow: 'hover:shadow-[0_10px_30px_-10px_rgba(45,212,191,0.35)]',
-  },
+  return (
+    <motion.div
+      variants={item}
+      className="w-full hover:cursor-default"
+    >
+      <div
+        className={[
+          'group relative rounded-2xl bg-white/70 dark:bg-white/5 backdrop-blur',
+          'border border-black/5 dark:border-white/10',
+          a.ring,
+          'transition-all duration-300',
+          'hover:-translate-y-0.5 active:translate-y-0',
+          a.glow,
+          'focus-within:-translate-y-0.5',
+        ].join(' ')}
+      >
+        {/* top gradient sheen */}
+        <div
+          className={[
+            'pointer-events-none absolute inset-x-0 -top-px h-20 rounded-t-2xl bg-gradient-to-b',
+            a.gradient,
+          ].join(' ')}
+        />
+
+        {/* colorful badge line */}
+        <div className="px-6 pt-6">
+          <span
+            className={[
+              'inline-block h-1.5 w-12 rounded-full opacity-90',
+              'bg-gradient-to-r',
+              a.badge,
+            ].join(' ')}
+          />
+        </div>
+
+        <div className="p-6 pt-4">
+          <h3 className="text-balance text-xl sm:text-2xl font-semibold tracking-tight text-neutral-900 dark:text-neutral-100">
+            {title}
+          </h3>
+          <p className="mt-3 sm:mt-4 text-sm sm:text-base leading-relaxed text-neutral-700 dark:text-neutral-300">
+            {desc}
+          </p>
+        </div>
+      </div>
+    </motion.div>
+  );
+}
+
+const rowStagger: Variants = {
+  hidden: { opacity: 1 },
+  show: { transition: { staggerChildren: 0.15, delayChildren: 0.05 } },
 };
+
+function StepRow({
+  idx,
+  title,
+  desc,
+  image,
+  reverse = false,
+}: {
+  idx: string;
+  title: string;
+  desc: string;
+  image: StaticImageData | string;
+  reverse?: boolean;
+}) {
+  return (
+    /* CHILD: each row controls its own viewport trigger */
+    <motion.div
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true, amount: 0.25 }} // each row animates when ~25% visible
+      variants={rowStagger} // local stagger within the row
+      className={[
+        'grid items-center gap-10 md:gap-14',
+        reverse ? 'md:grid-cols-[1fr_1.1fr]' : 'md:grid-cols-[1.1fr_1fr]',
+        'md:grid-cols-2',
+      ].join(' ')}
+    >
+      {/* Text */}
+      <motion.div
+        variants={fadeUp}
+        className={reverse ? 'md:order-2' : ''}
+      >
+        <div className="flex items-center gap-3">
+          <span className="inline-grid h-8 w-8 place-items-center rounded-lg bg-[#FF7966] text-white text-sm font-bold">
+            {idx}
+          </span>
+          <div className="h-px flex-1 bg-white/15" />
+        </div>
+
+        <h3 className="mt-4 text-2xl md:text-[28px] font-semibold tracking-tight text-neutral-100">
+          {title}
+        </h3>
+        <p className="mt-2 text-white/70">{desc}</p>
+      </motion.div>
+
+      {/* Image */}
+      <motion.div
+        variants={zoomInSoft}
+        className={reverse ? 'md:order-1' : ''}
+      >
+        <div className="relative mx-auto w-full max-w-xl">
+          <div className="relative overflow-hidden rounded-xl">
+            <Image
+              src={image}
+              alt=""
+              priority={idx === '1'}
+              width={250}
+              className={reverse ? 'md:ml-auto' : ''}
+            />
+          </div>
+        </div>
+      </motion.div>
+    </motion.div>
+  );
+}
 
 /* ---------- Page ---------- */
 export default function HomePage() {
   const { openModal } = useModal();
 
   return (
-    <main>
+    <main className="mt-12">
       {/* HERO */}
       <section className="relative overflow-hidden">
         <motion.div
@@ -229,13 +331,8 @@ export default function HomePage() {
         {/* subtle grid texture */}
         <div className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(to_right,rgba(255,255,255,0.04)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.04)_1px,transparent_1px)] bg-[size:24px_24px]" />
 
-        <motion.div
-          className="mx-auto max-w-6xl px-4 py-28 space-y-28"
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, amount: 0.2 }}
-          variants={stagger}
-        >
+        {/* PARENT: no whileInView here */}
+        <div className="mx-auto max-w-6xl px-4 py-28 space-y-28">
           <StepRow
             idx="1"
             title="Add your expenses"
@@ -257,13 +354,13 @@ export default function HomePage() {
             desc="Automatic reminders 2 days before due dates — never miss a payment."
             image={Notification}
           />
-        </motion.div>
+        </div>
       </section>
 
       {/* FINAL CTA */}
       <section className="relative overflow-hidden bg-black/10">
         <motion.div
-          className="mx-auto max-w-6xl px-4 py-40"
+          className="mx-auto max-w-6xl px-4 py-16 lg:py-40"
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, amount: 0.2 }}
@@ -310,122 +407,5 @@ export default function HomePage() {
         </motion.div>
       </section>
     </main>
-  );
-}
-
-/* ---------- Subcomponents ---------- */
-function Feature({
-  title,
-  desc,
-  i,
-}: {
-  title: string;
-  desc: string;
-  i: number;
-}) {
-  const a = accents[i % accents.length];
-
-  return (
-    <motion.div
-      variants={item}
-      className="w-full"
-    >
-      <div
-        className={[
-          'group relative rounded-2xl bg-white/70 dark:bg-white/5 backdrop-blur',
-          'border border-black/5 dark:border-white/10',
-          a.ring,
-          'transition-all duration-300',
-          'hover:-translate-y-0.5 active:translate-y-0',
-          a.glow,
-          'focus-within:-translate-y-0.5',
-        ].join(' ')}
-      >
-        {/* top gradient sheen */}
-        <div
-          className={[
-            'pointer-events-none absolute inset-x-0 -top-px h-20 rounded-t-2xl bg-gradient-to-b',
-            a.gradient,
-          ].join(' ')}
-        />
-
-        {/* colorful badge line */}
-        <div className="px-6 pt-6">
-          <span
-            className={[
-              'inline-block h-1.5 w-12 rounded-full opacity-90',
-              'bg-gradient-to-r',
-              a.badge,
-            ].join(' ')}
-          />
-        </div>
-
-        <div className="p-6 pt-4">
-          <h3 className="text-balance text-xl sm:text-2xl font-semibold tracking-tight text-neutral-900 dark:text-neutral-100">
-            {title}
-          </h3>
-          <p className="mt-3 sm:mt-4 text-sm sm:text-base leading-relaxed text-neutral-700 dark:text-neutral-300">
-            {desc}
-          </p>
-        </div>
-      </div>
-    </motion.div>
-  );
-}
-
-function StepRow({
-  idx,
-  title,
-  desc,
-  image,
-  reverse = false,
-}: {
-  idx: string;
-  title: string;
-  desc: string;
-  image: any;
-  reverse?: boolean;
-}) {
-  return (
-    <motion.div
-      variants={fadeUp}
-      className={[
-        'grid items-center gap-10 md:gap-14',
-        reverse ? 'md:grid-cols-[1fr_1.1fr]' : 'md:grid-cols-[1.1fr_1fr]',
-        'md:grid-cols-2',
-      ].join(' ')}
-    >
-      {/* Text */}
-      <div className={reverse ? 'md:order-2' : ''}>
-        <div className="flex items-center gap-3">
-          <span className="inline-grid h-8 w-8 place-items-center rounded-lg bg-[#FF7966] text-white text-sm font-bold">
-            {idx}
-          </span>
-          <div className="h-px flex-1 bg-white/15" />
-        </div>
-
-        <h3 className="mt-4 text-2xl md:text-[28px] font-semibold tracking-tight text-neutral-100">
-          {title}
-        </h3>
-        <p className="mt-2 text-white/70">{desc}</p>
-      </div>
-
-      {/* Image */}
-      <motion.div
-        variants={zoomInSoft}
-        className={reverse ? 'md:order-1' : ''}
-      >
-        <div className="relative mx-auto w-full max-w-xl">
-          <div className="relative overflow-hidden rounded-xl">
-            <Image
-              src={image}
-              alt=""
-              priority={idx === '1'}
-              width={250}
-            />
-          </div>
-        </div>
-      </motion.div>
-    </motion.div>
   );
 }

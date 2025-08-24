@@ -1,33 +1,61 @@
 import { Resend } from 'resend';
 import { redirect } from 'next/navigation';
 
-export const runtime = 'nodejs'; // garantit le runtime Node pour le SDK Resend
+export const runtime = 'nodejs'; // Ensure Node runtime for Resend
 
+/* -------------------------- Helpers & Constants -------------------------- */
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+function assertEnv(name: string): string {
+  const v = process.env[name];
+  if (!v) throw new Error(`Missing environment variable: ${name}`);
+  return v;
+}
+
+/* ----------------------------- UI Subcomponents ---------------------------- */
+function FormField({
+  label,
+  htmlFor,
+  children,
+}: {
+  label: string;
+  htmlFor: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <label
+      htmlFor={htmlFor}
+      className="block"
+    >
+      <span className="mb-1 block text-sm text-white/80">{label}</span>
+      {children}
+    </label>
+  );
+}
+
+/* --------------------------------- Page --------------------------------- */
 export default function ContactPage() {
   async function send(formData: FormData) {
     'use server';
 
     const email = String(formData.get('email') || '').trim();
     const message = String(formData.get('message') || '').trim();
-    // Champ "honeypot" anti-bot
-    const website = String(formData.get('website') || '');
+    const website = String(formData.get('website') || ''); // honeypot
 
-    if (website) return; // bot détecté
-    if (!email || !message) throw new Error('Required fields.');
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      throw new Error('Invalid email.');
-    }
+    // Basic bot + validation guards
+    if (website) return; // silently ignore bots
+    if (!email || !message) throw new Error('Required fields are missing.');
+    if (!EMAIL_RE.test(email)) throw new Error('Invalid email address.');
 
-    const resend = new Resend(process.env.RESEND_API_KEY);
-    const from = process.env.CONTACT_FROM!;
-    const to = process.env.CONTACT_TO!;
+    const resend = new Resend(assertEnv('RESEND_API_KEY'));
+    const from = assertEnv('CONTACT_FROM');
+    const to = assertEnv('CONTACT_TO');
 
     await resend.emails.send({
       from,
       to,
       subject: 'Nouveau message depuis TrackBayApp.com',
       text: `De: ${email}\n\n${message}`,
-      // Le SDK Node accepte "replyTo" pour l'adresse de réponse
       replyTo: email,
     });
 
@@ -35,52 +63,96 @@ export default function ContactPage() {
   }
 
   return (
-    <main className="max-w-md mx-auto p-6 mt-20">
-      <h1 className="text-2xl font-semibold mb-4">Contact</h1>
+    <main className="flex min-h-screen items-center justify-center px-4">
+      <div className="mx-auto max-w-lg">
+        <div className="rounded-2xl border border-black/10 bg-[#0E0E12] p-6 shadow-lg ring-1 ring-white/5 md:p-8">
+          <header className="mb-6">
+            <h1 className="text-2xl font-semibold tracking-tight">Contact</h1>
+            <p className="mt-1 text-sm text-white/60">
+              Send us a message and we’ll get back to you.
+            </p>
+          </header>
 
-      <form
-        action={send}
-        className="space-y-4"
-      >
-        {/* Honeypot (ne pas supprimer) */}
-        <input
-          type="text"
-          name="website"
-          autoComplete="off"
-          tabIndex={-1}
-          className="hidden"
-          aria-hidden="true"
-        />
+          <form
+            action={send}
+            className="space-y-5"
+          >
+            {/* Honeypot: keep rendered but hidden from users & ATs */}
+            <div
+              aria-hidden="true"
+              className="sr-only"
+            >
+              <label>
+                <span>Website</span>
+                <input
+                  type="text"
+                  name="website"
+                  autoComplete="off"
+                  tabIndex={-1}
+                />
+              </label>
+            </div>
 
-        <label className="block">
-          <span className="block text-sm mb-1">Email</span>
-          <input
-            type="email"
-            name="email"
-            required
-            className="w-full border rounded-md px-3 py-2"
-            placeholder="you@example.com"
-          />
-        </label>
+            <FormField
+              label="Email"
+              htmlFor="email"
+            >
+              <input
+                id="email"
+                name="email"
+                type="email"
+                required
+                inputMode="email"
+                autoComplete="email"
+                className="w-full rounded-lg border border-white/10 bg-black/10 px-3 py-2 text-sm placeholder-white/40 outline-none transition focus:border-white/20 focus:ring-4 focus:ring-white/10"
+                placeholder="you@example.com"
+                aria-required="true"
+              />
+            </FormField>
 
-        <label className="block">
-          <span className="block text-sm mb-1">Message</span>
-          <textarea
-            name="message"
-            required
-            rows={6}
-            className="w-full border rounded-md px-3 py-2"
-            placeholder="Write your message here…"
-          />
-        </label>
+            <FormField
+              label="Message"
+              htmlFor="message"
+            >
+              <textarea
+                id="message"
+                name="message"
+                required
+                rows={6}
+                className="w-full resize-y rounded-lg border border-white/10 bg-black/10 px-3 py-2 text-sm placeholder-white/40 outline-none transition focus:border-white/20 focus:ring-4 focus:ring-white/10"
+                placeholder="Write your message here…"
+                aria-required="true"
+              />
+            </FormField>
 
-        <button
-          type="submit"
-          className="w-full rounded-md px-4 py-2 border hover:bg-white hover:text-black duration-300 hover:cursor-pointer"
-        >
-          Send
-        </button>
-      </form>
+            <button
+              type="submit"
+              className="group inline-flex w-full items-center justify-center gap-2 rounded-lg border border-white/10 bg-white/5 px-4 py-2 text-sm font-medium transition hover:bg-white hover:text-black focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-white/20 active:scale-[0.99] hover:cursor-pointer"
+            >
+              Send
+              <svg
+                aria-hidden="true"
+                viewBox="0 0 24 24"
+                className="h-4 w-4 transition group-hover:translate-x-0.5"
+              >
+                <path
+                  d="M5 12h14M13 5l7 7-7 7"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </button>
+
+            <p className="text-xs text-white/50">
+              We’ll reply from our support address. Make sure to check your spam
+              folder if you don’t see a response soon.
+            </p>
+          </form>
+        </div>
+      </div>
     </main>
   );
 }

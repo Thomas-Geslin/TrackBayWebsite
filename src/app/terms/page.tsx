@@ -1,95 +1,66 @@
+import { TermsSections } from '@/data/TermsSection';
 import Link from 'next/link';
 
-export default function TermsPage() {
+const LAST_UPDATED = '2025-08-23';
+
+function SectionHeading({
+  index,
+  children,
+}: {
+  index: number;
+  children: React.ReactNode;
+}) {
   return (
-    <main>
-      <div className="mx-auto max-w-6xl px-4 py-16">
-        <div className="rounded-2xl border border-black/10 p-8 md:p-10">
-          <h1 className="text-3xl font-bold">Terms of Use</h1>
+    <h2 className="text-lg font-semibold">
+      <span className="mr-2 inline-flex h-6 w-6 items-center justify-center rounded-md border border-black/10 font-medium">
+        {index}.
+      </span>
+      {children}
+    </h2>
+  );
+}
+
+export default function Terms() {
+  return (
+    <main className="py-20">
+      <article className="mx-auto max-w-6xl rounded-2xl border border-black/10 p-8 md:p-10">
+        <header>
+          <h1 className="text-3xl font-bold tracking-tight">Terms of Use</h1>
           <p className="mt-2 text-sm text-white/60">
-            Last updated: August 23, 2025
+            Last updated: <time dateTime={LAST_UPDATED}>August 23, 2025</time>
           </p>
+        </header>
 
-          <div className="prose prose-neutral mt-8 max-w-none">
-            <p className="mb-8">
-              Welcome to <strong>TrackBay</strong>. By downloading or using this
-              app, you agree to be bound by these Terms of Use. If you do not
-              agree, please do not use the app.
-            </p>
+        <p className="mt-8 leading-relaxed">
+          Welcome to <strong>TrackBay</strong>. By downloading or using this
+          app, you agree to be bound by these Terms of Use. If you do not agree,
+          please do not use the app.
+        </p>
 
-            <h2 className="text-lg mb-2 font-semibold">
-              1. Purpose of the App
-            </h2>
-            <p className="mb-8">
-              TrackBay helps you track fixed monthly expenses (rent, bills,
-              subscriptions, etc.) and set reminders. The app is provided for
-              personal, informational purposes only.
-            </p>
+        <ol className="mt-10 space-y-12">
+          {TermsSections.map((section, idx) => (
+            <li key={section.title}>
+              <SectionHeading index={idx + 1}>{section.title}</SectionHeading>
+              <div className="mt-3 text-base leading-relaxed">
+                {section.content}
+              </div>
+            </li>
+          ))}
+        </ol>
 
-            <h2 className="text-lg mb-2 font-semibold">
-              2. No Financial Advice
-            </h2>
-            <p className="mb-8">
-              TrackBay is not a bank and does not provide financial, investment,
-              tax, or legal advice. You remain solely responsible for decisions
-              you make based on information in the app.
-            </p>
-
-            <h2 className="text-lg mb-2 font-semibold">
-              3. User Responsibilities
-            </h2>
-            <ul className="mb-8">
-              <li>Use the app in compliance with applicable laws.</li>
-              <li>
-                Do not misuse, disrupt, or attempt to reverse engineer it.
-              </li>
-              <li>Provide accurate information where required.</li>
-            </ul>
-
-            <h2 className="text-lg mb-2 font-semibold">
-              4. Data &amp; Privacy
-            </h2>
-            <p className="mb-8">
-              Your use of TrackBay is also governed by our{' '}
-              <Link href="/privacy_policy">Privacy Policy</Link>.
-            </p>
-
-            <h2 className="text-lg mb-2 font-semibold">
-              5. Limitation of Liability
-            </h2>
-            <p className="mb-8">
-              TrackBay is provided “as is” without warranties of any kind. To
-              the maximum extent permitted by law, we are not liable for any
-              indirect, incidental, or consequential damages, or for missed
-              payments or losses resulting from use of the app.
-            </p>
-
-            <h2 className="text-lg mb-2 font-semibold">6. Termination</h2>
-            <p className="mb-8">
-              We may suspend or terminate access to the app at any time if you
-              violate these Terms or use the app in a harmful or unlawful
-              manner.
-            </p>
-
-            <h2 className="text-lg mb-2 font-semibold">7. Changes to Terms</h2>
-            <p className="mb-8">
-              We may update these Terms from time to time. Continued use of the
-              app after changes means you accept the updated Terms.
-            </p>
-
-            <h2 className="text-lg mb-2 font-semibold">8. Governing Law</h2>
-            <p className="mb-8">
-              These Terms are governed by the laws of France. Courts of France
-              have exclusive jurisdiction.
-            </p>
-
-            <p className="mt-8 text-sm text-white/60">
-              If you have questions about these Terms, please{' '}
-              <Link href="/contact">contact us</Link>.
-            </p>
-          </div>
-        </div>
-      </div>
+        <footer className="mt-10 border-t border-black/10 pt-6">
+          <p className="text-sm text-white/60">
+            If you have questions about these Terms, please{' '}
+            <Link
+              className="underline hover:opacity-80"
+              href="/contact"
+            >
+              contact us
+            </Link>
+            .
+          </p>
+        </footer>
+      </article>
     </main>
   );
 }

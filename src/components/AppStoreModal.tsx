@@ -80,7 +80,7 @@ export default function AppStoreModal({ onClose }: Props) {
         <div className="mt-5 grid gap-4">
           {/* Apple */}
           <a
-            href="#"
+            href="https://apps.apple.com/fr/app/trackbay/id6751021688"
             className="group flex items-center gap-3 rounded-xl border border-white/10 bg-black px-4 py-3 hover:border-white/25"
           >
             <div className="grid h-10 w-10 place-items-center rounded-lg bg-black">
@@ -101,7 +101,7 @@ export default function AppStoreModal({ onClose }: Props) {
 
           {/* Google Play */}
           <a
-            href="#"
+            href="https://play.google.com/apps/internaltest/4700298940386923025"
             className="group flex items-center gap-3 rounded-xl border border-black/10 bg-white px-4 py-3 hover:border-black/20"
           >
             <div className="grid h-10 w-10 place-items-center rounded-lg bg-white">
