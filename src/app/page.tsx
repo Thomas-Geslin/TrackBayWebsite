@@ -7,6 +7,7 @@ import { motion, type Variants } from 'framer-motion';
 import Mockup from '../../public/images/app_preview.png';
 import Spending from '../../public/images/spending.png';
 import Notification from '../../public/images/notification.png';
+import { useModal } from '@/providers/ModalProvider';
 
 /* ---------- Animation settings ---------- */
 const easeInOut = [0.4, 0, 0.2, 1] as const; // slow → fast → slow
@@ -45,6 +46,8 @@ const stagger: Variants = {
 
 /* ---------- Page ---------- */
 export default function HomePage() {
+  const { openModal } = useModal();
+
   return (
     <main>
       {/* HERO */}
@@ -75,12 +78,12 @@ export default function HomePage() {
               variants={fadeUp}
               custom={1}
             >
-              <a
-                href="#"
-                className="rounded-md bg-[#FFA699] px-5 py-3 text-white font-semibold hover:opacity-90 duration-500 hover:bg-[#FF7966]"
+              <button
+                onClick={openModal}
+                className="rounded-md bg-[#FFA699] px-5 py-3 text-white font-semibold hover:opacity-90 duration-500 hover:bg-[#FF7966] hover:cursor-pointer"
               >
                 Get the app
-              </a>
+              </button>
               <a
                 href="#how"
                 className="rounded-md border border-white/30 px-5 py-3 font-semibold hover:border-white/70 duration-500"
@@ -174,7 +177,7 @@ export default function HomePage() {
           <motion.div
             variants={fadeUp}
             custom={1}
-            className="md:translate-y-6"
+            className="md:translate-y-80"
           >
             <Step
               idx="2"
@@ -227,12 +230,12 @@ export default function HomePage() {
             variants={fadeUp}
             custom={2}
           >
-            <a
-              href="#"
-              className="rounded-md bg-[#FFA699] px-6 py-3 text-white font-semibold hover:bg-[#FF7966] duration-300"
+            <button
+              onClick={openModal}
+              className="rounded-md bg-[#FFA699] px-6 py-3 text-white font-semibold hover:bg-[#FF7966] duration-500 hover:cursor-pointer"
             >
               Get the app
-            </a>
+            </button>
           </motion.div>
         </motion.div>
       </section>
