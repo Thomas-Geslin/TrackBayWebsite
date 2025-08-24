@@ -10,8 +10,8 @@ import Notification from '../../public/images/notification.png';
 import { useModal } from '@/providers/ModalProvider';
 
 /* ---------- Animation settings ---------- */
-const easeInOut = [0.4, 0, 0.2, 1] as const; // slow → fast → slow
-const DURATION = 2; // seconds
+const easeInOut = [0.4, 0, 0.2, 1] as const;
+const DURATION = 2;
 
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 24 },
@@ -41,7 +41,68 @@ const zoomInSoft: Variants = {
 };
 
 const stagger: Variants = {
-  show: { transition: { staggerChildren: 0.08 } },
+  hidden: { opacity: 1 },
+  show: { transition: { staggerChildren: 0.12, delayChildren: 0.05 } },
+};
+
+const item: Variants = {
+  hidden: { opacity: 0, y: 18, filter: 'blur(2px)' },
+  show: {
+    opacity: 1,
+    y: 0,
+    filter: 'blur(0px)',
+    transition: { type: 'spring', stiffness: 260, damping: 26 },
+  },
+};
+
+/* ---------- Feature accents ---------- */
+const accents = [
+  {
+    ring: 'ring-1 ring-orange-200/50 dark:ring-orange-300/20',
+    glow: 'shadow-[0_0_0_0_rgba(0,0,0,0)] hover:shadow-[0_10px_30px_-10px_rgba(255,140,80,0.45)]',
+    gradient: 'from-orange-400/20 via-orange-300/10 to-transparent',
+    badge: 'bg-gradient-to-r from-orange-500 to-rose-500',
+  },
+  {
+    ring: 'ring-1 ring-indigo-200/50 dark:ring-indigo-300/20',
+    glow: 'shadow-[0_0_0_0_rgba(0,0,0,0)] hover:shadow-[0_10px_30px_-10px_rgba(99,102,241,0.45)]',
+    gradient: 'from-indigo-400/20 via-indigo-300/10 to-transparent',
+    badge: 'bg-gradient-to-r from-indigo-500 to-cyan-500',
+  },
+  {
+    ring: 'ring-1 ring-teal-200/50 dark:ring-teal-300/20',
+    glow: 'shadow-[0_0_0_0_rgba(0,0,0,0)] hover:shadow-[0_10px_30px_-10px_rgba(45,212,191,0.45)]',
+    gradient: 'from-teal-400/20 via-teal-300/10 to-transparent',
+    badge: 'bg-gradient-to-r from-teal-500 to-emerald-500',
+  },
+] as const;
+
+/* ---------- Step accents ---------- */
+type Accent = 'orange' | 'indigo' | 'teal';
+
+const stepAccents: Record<
+  Accent,
+  {
+    badge: string;
+    ring: string;
+    glow: string;
+  }
+> = {
+  orange: {
+    badge: 'from-orange-500 to-rose-500',
+    ring: 'ring-1 ring-orange-200/40 dark:ring-orange-300/20',
+    glow: 'hover:shadow-[0_10px_30px_-10px_rgba(255,140,80,0.35)]',
+  },
+  indigo: {
+    badge: 'from-indigo-500 to-cyan-500',
+    ring: 'ring-1 ring-indigo-200/40 dark:ring-indigo-300/20',
+    glow: 'hover:shadow-[0_10px_30px_-10px_rgba(99,102,241,0.35)]',
+  },
+  teal: {
+    badge: 'from-teal-500 to-emerald-500',
+    ring: 'ring-1 ring-teal-200/40 dark:ring-teal-300/20',
+    glow: 'hover:shadow-[0_10px_30px_-10px_rgba(45,212,191,0.35)]',
+  },
 };
 
 /* ---------- Page ---------- */
@@ -53,47 +114,50 @@ export default function HomePage() {
       {/* HERO */}
       <section className="relative overflow-hidden">
         <motion.div
-          className="mx-auto max-w-6xl px-4 py-24 md:py-28 flex items-center justify-between"
+          className="mx-auto max-w-6xl px-4 py-24 md:py-28 flex items-center justify-between gap-10"
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, amount: 0.2 }}
           variants={stagger}
         >
           <motion.div
-            className="w-[50%]"
+            className="w-full md:w-1/2"
             variants={fadeRight}
           >
-            <h1 className="text-4xl md:text-5xl font-extrabold leading-tight">
+            <h1 className="text-4xl md:text-5xl font-extrabold leading-tight text-neutral-100">
               Track your monthly expenses{' '}
-              <span className="text-[#FF7966]">before they hit</span>.
+              <span className="bg-gradient-to-r from-[#FF7966] to-[#FFA699] bg-clip-text text-transparent">
+                before they hit
+              </span>
+              .
             </h1>
-            <p className="mt-4 text-lg text-white">
+            <p className="mt-4 text-lg text-white/80">
               Centralize rent, bills & subscriptions and get reminded before
               each due date. No bank connection. Private by design.
             </p>
 
             <motion.div
               id="download"
-              className="mt-16 flex items-center gap-4"
+              className="mt-10 flex flex-wrap items-center gap-4"
               variants={fadeUp}
               custom={1}
             >
               <button
                 onClick={openModal}
-                className="rounded-md bg-[#FFA699] px-5 py-3 text-white font-semibold hover:opacity-90 duration-500 hover:bg-[#FF7966] hover:cursor-pointer"
+                className="rounded-xl bg-[#FFA699] px-5 py-3 text-white font-semibold transition-colors duration-300 hover:bg-[#FF7966] focus:outline-none focus-visible:ring-2 focus-visible:ring-white/70"
               >
                 Get the app
               </button>
               <a
                 href="#how"
-                className="rounded-md border border-white/30 px-5 py-3 font-semibold hover:border-white/70 duration-500"
+                className="rounded-xl border border-white/25 px-5 py-3 font-semibold text-white/90 transition-all hover:border-white/60 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/70"
               >
                 See how it works
               </a>
             </motion.div>
 
             <motion.p
-              className="mt-6 text-sm text-white"
+              className="mt-6 text-sm text-white/70"
               variants={fadeUp}
               custom={2}
             >
@@ -117,23 +181,23 @@ export default function HomePage() {
 
           {/* Mockup */}
           <motion.div
-            className="w-[35%]"
+            className="hidden md:block md:w-5/12"
             variants={zoomInSoft}
           >
             <Image
               src={Mockup}
               alt="App preview"
-              className="w-full"
+              className="w-[80%]"
               priority
             />
           </motion.div>
         </motion.div>
       </section>
 
-      {/* FEATURES */}
-      <section className="bg-black/[0.1]">
+      {/* FEATURES – polished cards */}
+      <section className="relative overflow-hidden bg-black/10">
         <motion.div
-          className="mx-auto max-w-6xl px-4 py-20 grid md:grid-cols-3 gap-8"
+          className="mx-auto max-w-6xl px-4 py-20 grid gap-6 sm:gap-8 md:grid-cols-3"
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, amount: 0.2 }}
@@ -158,85 +222,91 @@ export default function HomePage() {
       </section>
 
       {/* HOW IT WORKS */}
-      <section id="how">
+      <section
+        id="how"
+        className="relative"
+      >
+        {/* subtle grid texture */}
+        <div className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(to_right,rgba(255,255,255,0.04)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.04)_1px,transparent_1px)] bg-[size:24px_24px]" />
+
         <motion.div
-          className="mx-auto max-w-6xl px-4 py-32 grid md:grid-cols-2 gap-12"
+          className="mx-auto max-w-6xl px-4 py-28 space-y-28"
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, amount: 0.2 }}
           variants={stagger}
         >
-          <Step
+          <StepRow
             idx="1"
             title="Add your expenses"
-            desc="List rent, utilities, insurance, and subscriptions."
+            desc="List rent, utilities, insurance, and subscriptions in seconds."
             image={Mockup}
-            delayIndex={0}
           />
 
-          <motion.div
-            variants={fadeUp}
-            custom={1}
-            className="md:translate-y-80"
-          >
-            <Step
-              idx="2"
-              title="Categorize"
-              desc="Easily manage, and sort your expenses. To keep track of your money."
-              image={Spending}
-            />
-          </motion.div>
+          <StepRow
+            idx="2"
+            title="Categorize"
+            desc="Organize by category and keep a clear view of where your money goes."
+            image={Spending}
+            reverse
+          />
 
-          <motion.div
-            variants={fadeUp}
-            custom={2}
-            className="mt-10 md:mt-20"
-          >
-            <Step
-              idx="3"
-              title="Be reminded"
-              desc="Get a reminder 2 days before one of your expense is due."
-              image={Notification}
-            />
-          </motion.div>
+          <StepRow
+            idx="3"
+            title="Be reminded"
+            desc="Automatic reminders 2 days before due dates — never miss a payment."
+            image={Notification}
+          />
         </motion.div>
       </section>
 
       {/* FINAL CTA */}
-      <section className="bg-black/[0.1]">
+      <section className="relative overflow-hidden bg-black/10">
         <motion.div
-          className="mx-auto max-w-6xl px-4 py-80 text-center"
+          className="mx-auto max-w-6xl px-4 py-40"
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, amount: 0.2 }}
           variants={stagger}
         >
-          <motion.h2
-            className="text-3xl md:text-4xl font-extrabold"
-            variants={fadeUp}
-          >
-            Ready to take control of your monthly expenses?
-          </motion.h2>
-          <motion.p
-            className="mt-3 text-white"
-            variants={fadeUp}
-            custom={1}
-          >
-            Join thousands of users who get notified before due dates — no bank
-            connection needed.
-          </motion.p>
-          <motion.div
-            className="mt-16"
-            variants={fadeUp}
-            custom={2}
-          >
-            <button
-              onClick={openModal}
-              className="rounded-md bg-[#FFA699] px-6 py-3 text-white font-semibold hover:bg-[#FF7966] duration-500 hover:cursor-pointer"
+          {/* translucent band */}
+          <div className="mx-auto max-w-3xl rounded-3xl bg-white/5 backdrop-blur p-8 sm:p-12 text-center ring-1 ring-white/10">
+            <motion.h2
+              className="text-balance text-3xl md:text-4xl font-extrabold text-neutral-100"
+              variants={fadeUp}
             >
-              Get the app
-            </button>
-          </motion.div>
+              Ready to take control of your monthly expenses?
+            </motion.h2>
+
+            <motion.p
+              className="mt-3 text-white/80"
+              variants={fadeUp}
+              custom={1}
+            >
+              Join thousands who get notified before due dates — no bank
+              connection needed.
+            </motion.p>
+
+            <motion.div
+              className="mt-8 flex flex-wrap items-center justify-center gap-3 sm:gap-4"
+              variants={fadeUp}
+              custom={2}
+            >
+              <button
+                onClick={openModal}
+                className="inline-flex items-center justify-center rounded-xl bg-[#FFA699] px-6 py-3 text-white font-semibold transition-colors duration-300 hover:bg-[#FF7966] focus:outline-none focus-visible:ring-2 focus-visible:ring-white/70 hover:cursor-pointer"
+              >
+                Get the app
+              </button>
+
+              <a
+                href="#how"
+                className="inline-flex items-center justify-center rounded-xl px-6 py-3 text-white/90 font-medium ring-1 ring-white/15 hover:ring-white/25 hover:text-white transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-white/70"
+              >
+                See how it works
+              </a>
+            </motion.div>
+          </div>
         </motion.div>
       </section>
     </main>
@@ -253,57 +323,108 @@ function Feature({
   desc: string;
   i: number;
 }) {
+  const a = accents[i % accents.length];
+
   return (
     <motion.div
-      className="rounded-2xl border border-black/10 p-6 odd:bg-[#ff7966] even:bg-[#4E4E61]"
-      variants={fadeUp}
-      custom={i}
+      variants={item}
+      className="w-full"
     >
-      <h3 className="font-bold text-2xl">{title}.</h3>
-      <p className="mt-12 text-black">{desc}</p>
+      <div
+        className={[
+          'group relative rounded-2xl bg-white/70 dark:bg-white/5 backdrop-blur',
+          'border border-black/5 dark:border-white/10',
+          a.ring,
+          'transition-all duration-300',
+          'hover:-translate-y-0.5 active:translate-y-0',
+          a.glow,
+          'focus-within:-translate-y-0.5',
+        ].join(' ')}
+      >
+        {/* top gradient sheen */}
+        <div
+          className={[
+            'pointer-events-none absolute inset-x-0 -top-px h-20 rounded-t-2xl bg-gradient-to-b',
+            a.gradient,
+          ].join(' ')}
+        />
+
+        {/* colorful badge line */}
+        <div className="px-6 pt-6">
+          <span
+            className={[
+              'inline-block h-1.5 w-12 rounded-full opacity-90',
+              'bg-gradient-to-r',
+              a.badge,
+            ].join(' ')}
+          />
+        </div>
+
+        <div className="p-6 pt-4">
+          <h3 className="text-balance text-xl sm:text-2xl font-semibold tracking-tight text-neutral-900 dark:text-neutral-100">
+            {title}
+          </h3>
+          <p className="mt-3 sm:mt-4 text-sm sm:text-base leading-relaxed text-neutral-700 dark:text-neutral-300">
+            {desc}
+          </p>
+        </div>
+      </div>
     </motion.div>
   );
 }
 
-function Step({
+function StepRow({
   idx,
   title,
   desc,
   image,
-  delayIndex = 0,
+  reverse = false,
 }: {
   idx: string;
   title: string;
   desc: string;
   image: any;
-  delayIndex?: number;
+  reverse?: boolean;
 }) {
   return (
     <motion.div
-      className="p-6 rounded-lg mb-16 items-center"
       variants={fadeUp}
-      custom={delayIndex}
+      className={[
+        'grid items-center gap-10 md:gap-14',
+        reverse ? 'md:grid-cols-[1fr_1.1fr]' : 'md:grid-cols-[1.1fr_1fr]',
+        'md:grid-cols-2',
+      ].join(' ')}
     >
-      <div className="flex items-start gap-8 mb-8">
-        <div
-          className="h-9 w-9 shrink-0 rounded-full grid place-items-center text-white font-bold"
-          style={{ background: '#ff7966' }}
-        >
-          {idx}
+      {/* Text */}
+      <div className={reverse ? 'md:order-2' : ''}>
+        <div className="flex items-center gap-3">
+          <span className="inline-grid h-8 w-8 place-items-center rounded-lg bg-[#FF7966] text-white text-sm font-bold">
+            {idx}
+          </span>
+          <div className="h-px flex-1 bg-white/15" />
         </div>
 
-        <div>
-          <h3 className="font-semibold text-lg mb-2">{title}</h3>
-          <p className="text-white/50">{desc}</p>
-        </div>
+        <h3 className="mt-4 text-2xl md:text-[28px] font-semibold tracking-tight text-neutral-100">
+          {title}
+        </h3>
+        <p className="mt-2 text-white/70">{desc}</p>
       </div>
 
-      <motion.div variants={zoomInSoft}>
-        <Image
-          src={image}
-          alt=""
-          className="w-[50%] m-auto"
-        />
+      {/* Image */}
+      <motion.div
+        variants={zoomInSoft}
+        className={reverse ? 'md:order-1' : ''}
+      >
+        <div className="relative mx-auto w-full max-w-xl">
+          <div className="relative overflow-hidden rounded-xl">
+            <Image
+              src={image}
+              alt=""
+              priority={idx === '1'}
+              width={250}
+            />
+          </div>
+        </div>
       </motion.div>
     </motion.div>
   );

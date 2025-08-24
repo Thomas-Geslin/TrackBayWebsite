@@ -9,36 +9,54 @@ export default function Header() {
   const { openModal } = useModal();
 
   return (
-    <header className="bg-[#121216]">
-      <div className="mx-auto max-w-6xl px-4 py-6 flex items-center justify-between">
+    <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-[#121216]/70 backdrop-blur supports-[backdrop-filter]:bg-[#121216]/60">
+      <div className="mx-auto max-w-6xl px-4 py-3 sm:py-4 flex items-center justify-between">
+        {/* Brand */}
         <Link
           href="/"
-          className="flex items-center gap-2"
+          className="group inline-flex items-center gap-2"
         >
           <Image
             src={Logo}
-            alt="Logo"
-            width={35}
-            height={35}
+            alt="TrackBay logo"
+            width={36}
+            height={36}
             className="rounded-md"
+            priority
           />
-          <span className="font-semibold">TrackBay</span>
+          <span className="font-semibold text-white/90 group-hover:text-white transition-colors">
+            TrackBay
+          </span>
         </Link>
 
-        <nav className="hidden sm:flex items-center gap-6 text-sm">
+        {/* Desktop nav */}
+        <nav className="hidden sm:flex items-center gap-3">
           <Link
             href="/contact"
-            className="inline-flex items-center rounded-md bg-[#353542] px-4 py-2 text-white font-semibold hover:bg-[#4E4E61] duration-500"
+            className="inline-flex items-center rounded-xl px-4 py-2 text-sm font-medium text-white/90 ring-1 ring-white/15 hover:ring-white/25 hover:text-white transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-white/70 duration-500"
           >
             Contact
           </Link>
+
           <button
             onClick={openModal}
-            className="inline-flex items-center rounded-md bg-[#FF7966] px-4 py-2 text-white font-semibold hover:bg-[#FFA699] duration-500 hover:cursor-pointer"
+            className="inline-flex items-center rounded-xl px-4 py-2 text-sm font-semibold text-white bg-[#FF7966] hover:bg-[#ffa295] duration-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/70 hover:cursor-pointer"
+            aria-label="Get the TrackBay app"
           >
             Get the app
           </button>
         </nav>
+
+        {/* Mobile CTA only (keeps it simple) */}
+        <div className="sm:hidden">
+          <button
+            onClick={openModal}
+            className="inline-flex items-center rounded-xl px-3 py-2 text-sm font-semibold text-white bg-[#FF7966] hover:bg-[#FFA699] focus:outline-none focus-visible:ring-2 focus-visible:ring-white/70"
+            aria-label="Get the TrackBay app"
+          >
+            Get the app
+          </button>
+        </div>
       </div>
     </header>
   );

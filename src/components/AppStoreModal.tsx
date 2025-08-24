@@ -61,7 +61,7 @@ export default function AppStoreModal({ onClose }: Props) {
         <button
           ref={closeBtnRef}
           onClick={onClose}
-          className="absolute right-3 top-3 rounded-md px-2 py-1 text-white/80 hover:text-white focus:outline-none focus:ring-2 focus:ring-white/30"
+          className="absolute right-3 top-3 rounded-md px-2 py-1 text-white/80 hover:text-white focus:outline-none focus:ring-2 focus:ring-white/30 hover:cursor-pointer"
           aria-label="Close"
         >
           ✕
