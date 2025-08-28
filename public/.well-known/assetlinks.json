@@ -1,11 +1,15 @@
 [
   {
-    "relation": ["delegate_permission/common.handle_all_urls"],
+    "relation": [
+      "delegate_permission/common.handle_all_urls",
+      "delegate_permission/common.get_login_creds"
+    ],
     "target": {
       "namespace": "android_app",
       "package_name": "com.thomasgeslin.trackbay",
       "sha256_cert_fingerprints": [
-        "4A:1A:45:7E:67:02:09:F9:BD:E0:54:A7:2C:10:0F:68:BF:DF:BB:34:77:86:87:70:F7:BC:63:B9:FD:52:08:55"
+        "4A:1A:45:7E:67:02:09:F9:BD:E0:54:A7:2C:10:0F:68:BF:DF:BB:34:77:86:87:70:F7:BC:63:B9:FD:52:08:55",
+        "41:23:1F:0F:71:3F:FB:CA:A6:1F:89:F0:94:BB:60:31:78:D4:50:9F:F0:4D:05:44:D5:F1:55:F3:91:F3:E8:D6"
       ]
     }
   }
