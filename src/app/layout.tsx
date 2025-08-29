@@ -4,6 +4,7 @@ import { ModalProvider } from '../providers/ModalProvider';
 import Header from '../components/Header';
 import AppStoreModalMount from '../components/AppStoreModalMount';
 import Footer from '@/components/Footer';
+import { Analytics } from '@vercel/analytics/next';
 
 export const metadata = {
   title: 'TrackBay — Track your monthly expenses',
@@ -40,6 +41,7 @@ export default function RootLayout({
           {/* Modal is mounted globally once, via a client bridge */}
           <AppStoreModalMount />
         </ModalProvider>
+        <Analytics />
       </body>
     </html>
   );
