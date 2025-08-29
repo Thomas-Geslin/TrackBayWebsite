@@ -5,7 +5,7 @@ export default function Footer() {
   const year = new Date().getUTCFullYear(); // stable across TZs
 
   return (
-    <footer className="bg-[#0E0E12]">
+    <footer className="bg-[#0E0E12] md:px-12">
       <div className="mx-auto max-w-6xl px-4 py-8 text-sm flex flex-col sm:flex-row items-center justify-between gap-3">
         <p>© {year} TrackBay. All rights reserved.</p>
 
@@ -23,7 +23,7 @@ export default function Footer() {
           >
             Terms of Use
           </Link>
-          
+
           <Link
             href="/contact"
             className="hover:opacity-80"

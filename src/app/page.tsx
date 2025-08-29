@@ -214,7 +214,7 @@ export default function HomePage() {
   return (
     <main className="mt-12">
       {/* HERO */}
-      <section className="relative overflow-hidden">
+      <section className="relative overflow-hidden md:px-12">
         <motion.div
           className="mx-auto max-w-6xl px-4 py-24 md:py-28 flex items-center justify-between gap-10"
           initial="hidden"
@@ -297,7 +297,7 @@ export default function HomePage() {
       </section>
 
       {/* FEATURES – polished cards */}
-      <section className="relative overflow-hidden bg-black/10">
+      <section className="relative overflow-hidden md:px-12 bg-black/10">
         <motion.div
           className="mx-auto max-w-6xl px-4 py-20 grid gap-6 sm:gap-8 md:grid-cols-3"
           initial="hidden"
@@ -332,7 +332,7 @@ export default function HomePage() {
         <div className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(to_right,rgba(255,255,255,0.04)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.04)_1px,transparent_1px)] bg-[size:24px_24px]" />
 
         {/* PARENT: no whileInView here */}
-        <div className="mx-auto max-w-6xl px-4 py-28 space-y-28">
+        <div className="mx-auto md:px-12 max-w-6xl px-4 py-28 space-y-28">
           <StepRow
             idx="1"
             title="Add your expenses"
@@ -358,7 +358,7 @@ export default function HomePage() {
       </section>
 
       {/* FINAL CTA */}
-      <section className="relative overflow-hidden bg-black/10">
+      <section className="relative md:px-12 overflow-hidden bg-black/10">
         <motion.div
           className="mx-auto max-w-6xl px-4 py-16 lg:py-40"
           initial="hidden"

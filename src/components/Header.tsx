@@ -9,7 +9,7 @@ export default function Header() {
   const { openModal } = useModal();
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-[#121216]/70 backdrop-blur supports-[backdrop-filter]:bg-[#121216]/60">
+    <header className="fixed md:px-12 inset-x-0 top-0 z-50 border-b border-white/10 bg-[#121216]/70 backdrop-blur supports-[backdrop-filter]:bg-[#121216]/60">
       <div className="mx-auto max-w-6xl px-4 py-3 sm:py-4 flex items-center justify-between">
         {/* Brand */}
         <Link
