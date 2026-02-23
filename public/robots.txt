@@ -1,5 +1,5 @@
 User-agent: *
 Allow: /
-Disallow: /privacy-policy
-Disallow: /terms
+Allow: /privacy_policy
+Allow: /terms
 Sitemap: https://trackbayapp.com/sitemap.xml
