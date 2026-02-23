@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import posthog from 'posthog-js';
 
 /**
  * Solid, SSR-safe fallback page that force-opens the native app.
@@ -17,6 +18,9 @@ export default function WebResetPassword() {
     const hash = window.location.hash || '';
     const scheme = `com.trackbay://pages/ResetPassword${qs}${hash}`;
     setHref(scheme);
+
+    // Track that the user arrived on the reset password page
+    posthog.capture('reset_password_deep_link_opened');
 
     const tipsTimer = setTimeout(() => setShowTips(true), 1500);
     window.location.replace(scheme);

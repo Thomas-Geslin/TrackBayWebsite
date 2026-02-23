@@ -13,6 +13,8 @@
     "@vercel/speed-insights": "^1.2.0",
     "framer-motion": "^12.23.12",
     "next": "^15.4.10",
+    "posthog-js": "^1.352.1",
+    "posthog-node": "^5.24.17",
     "react": "19.1.0",
     "react-dom": "19.1.0",
     "resend": "^6.0.1"

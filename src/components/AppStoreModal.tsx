@@ -7,6 +7,7 @@ import { createPortal } from 'react-dom';
 import Apple from '../../public/images/apple-logo.png';
 import Google from '../../public/images/google-play-logo.png';
 import Image from 'next/image';
+import posthog from 'posthog-js';
 
 type Props = { onClose: () => void };
 
@@ -15,6 +16,11 @@ const EASE = [0.4, 0, 0.2, 1] as const;
 export default function AppStoreModal({ onClose }: Props) {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const closeBtnRef = useRef<HTMLButtonElement | null>(null);
+
+  function handleClose() {
+    posthog.capture('modal_closed');
+    onClose();
+  }
 
   // focus management only (no scroll lock anymore)
   useEffect(() => {
@@ -28,7 +34,7 @@ export default function AppStoreModal({ onClose }: Props) {
     const onKey = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
         e.stopPropagation();
-        onClose();
+        handleClose();
       }
     };
     window.addEventListener('keydown', onKey);
@@ -45,7 +51,7 @@ export default function AppStoreModal({ onClose }: Props) {
       {/* Backdrop */}
       <button
         className="absolute inset-0 bg-black/70"
-        onClick={onClose}
+        onClick={() => handleClose()}
         aria-label="Close modal"
       />
 
@@ -56,11 +62,11 @@ export default function AppStoreModal({ onClose }: Props) {
         animate={{ opacity: 1, scale: 1 }}
         exit={{ opacity: 0, scale: 0.96 }}
         transition={{ duration: 0.25, ease: EASE }}
-        className="relative w-[92%] max-w-md rounded-2xl bg-[#0E0E12] p-6 shadow-2xl outline outline-1 outline-white/10"
+        className="relative w-[92%] max-w-md rounded-2xl bg-[#0E0E12] p-6 shadow-2xl outline-1 outline-white/10"
       >
         <button
           ref={closeBtnRef}
-          onClick={onClose}
+          onClick={() => handleClose()}
           className="absolute right-3 top-3 rounded-md px-2 py-1 text-white/80 hover:text-white focus:outline-none focus:ring-2 focus:ring-white/30 hover:cursor-pointer"
           aria-label="Close"
         >
@@ -82,6 +88,7 @@ export default function AppStoreModal({ onClose }: Props) {
           <a
             href="https://apps.apple.com/fr/app/trackbay/id6751021688"
             target="_blank"
+            onClick={() => posthog.capture('app_store_download_clicked', { platform: 'ios' })}
             className="group flex items-center gap-3 rounded-xl border border-white/10 bg-black px-4 py-3 hover:border-white/25"
           >
             <div className="grid h-10 w-10 place-items-center rounded-lg bg-black">
@@ -104,6 +111,7 @@ export default function AppStoreModal({ onClose }: Props) {
           <a
             href="https://play.google.com/store/apps/details?id=com.thomasgeslin.trackbay"
             target="_blank"
+            onClick={() => posthog.capture('google_play_download_clicked', { platform: 'android' })}
             className="group flex items-center gap-3 rounded-xl border border-black/10 bg-white px-4 py-3 hover:border-black/20"
           >
             <div className="grid h-10 w-10 place-items-center rounded-lg bg-white">

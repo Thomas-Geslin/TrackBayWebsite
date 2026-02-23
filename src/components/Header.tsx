@@ -4,9 +4,19 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useModal } from '../providers/ModalProvider';
 import Logo from '../../public/images/logo.png';
+import posthog from 'posthog-js';
 
 export default function Header() {
   const { openModal } = useModal();
+
+  function handleGetApp() {
+    posthog.capture('get_app_clicked', { location: 'header' });
+    openModal();
+  }
+
+  function handleContact() {
+    posthog.capture('header_contact_clicked');
+  }
 
   return (
     <header className="fixed md:px-12 inset-x-0 top-0 z-50 border-b border-white/10 bg-[#121216]/70 backdrop-blur supports-[backdrop-filter]:bg-[#121216]/60">
@@ -33,13 +43,14 @@ export default function Header() {
         <nav className="hidden sm:flex items-center gap-3">
           <Link
             href="/contact"
+            onClick={handleContact}
             className="inline-flex items-center rounded-xl px-4 py-2 text-sm font-medium text-white/90 ring-1 ring-white/15 hover:ring-white/25 hover:text-white transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-white/70 duration-500"
           >
             Contact
           </Link>
 
           <button
-            onClick={openModal}
+            onClick={() => handleGetApp()}
             className="inline-flex items-center rounded-xl px-4 py-2 text-sm font-semibold text-white bg-[#FF7966] hover:bg-[#ffa295] duration-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/70 hover:cursor-pointer"
             aria-label="Get the TrackBay app"
           >
@@ -50,7 +61,7 @@ export default function Header() {
         {/* Mobile CTA only (keeps it simple) */}
         <div className="sm:hidden">
           <button
-            onClick={openModal}
+            onClick={() => handleGetApp()}
             className="inline-flex items-center rounded-xl px-3 py-2 text-sm font-semibold text-white bg-[#FF7966] hover:bg-[#FFA699] focus:outline-none focus-visible:ring-2 focus-visible:ring-white/70"
             aria-label="Get the TrackBay app"
           >

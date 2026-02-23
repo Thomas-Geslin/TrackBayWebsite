@@ -8,6 +8,7 @@ import Mockup from '../../public/images/app_preview.png';
 import Spending from '../../public/images/spending.png';
 import Notification from '../../public/images/notification.png';
 import { useModal } from '@/providers/ModalProvider';
+import posthog from 'posthog-js';
 
 /* ---------- Animation settings ---------- */
 const easeInOut = [0.4, 0, 0.2, 1] as const;
@@ -211,6 +212,24 @@ function StepRow({
 export default function HomePage() {
   const { openModal } = useModal();
 
+  function handleHeroGetApp() {
+    posthog.capture('get_app_clicked', { location: 'hero' });
+    openModal();
+  }
+
+  function handleHeroSeeHow() {
+    posthog.capture('see_how_it_works_clicked', { location: 'hero' });
+  }
+
+  function handleCtaGetApp() {
+    posthog.capture('get_app_clicked', { location: 'cta_section' });
+    openModal();
+  }
+
+  function handleCtaSeeHow() {
+    posthog.capture('see_how_it_works_clicked', { location: 'cta_section' });
+  }
+
   return (
     <main className="mt-12">
       {/* HERO */}
@@ -245,13 +264,14 @@ export default function HomePage() {
               custom={1}
             >
               <button
-                onClick={openModal}
+                onClick={handleHeroGetApp}
                 className="rounded-xl bg-[#FFA699] px-5 py-3 text-white font-semibold transition-colors duration-300 hover:bg-[#FF7966] focus:outline-none focus-visible:ring-2 focus-visible:ring-white/70"
               >
                 Get the app
               </button>
               <a
                 href="#how"
+                onClick={handleHeroSeeHow}
                 className="rounded-xl border border-white/25 px-5 py-3 font-semibold text-white/90 transition-all hover:border-white/60 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/70"
               >
                 See how it works
@@ -390,7 +410,7 @@ export default function HomePage() {
               custom={2}
             >
               <button
-                onClick={openModal}
+                onClick={handleCtaGetApp}
                 className="inline-flex items-center justify-center rounded-xl bg-[#FFA699] px-6 py-3 text-white font-semibold transition-colors duration-300 hover:bg-[#FF7966] focus:outline-none focus-visible:ring-2 focus-visible:ring-white/70 hover:cursor-pointer"
               >
                 Get the app
@@ -398,6 +418,7 @@ export default function HomePage() {
 
               <a
                 href="#how"
+                onClick={handleCtaSeeHow}
                 className="inline-flex items-center justify-center rounded-xl px-6 py-3 text-white/90 font-medium ring-1 ring-white/15 hover:ring-white/25 hover:text-white transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-white/70"
               >
                 See how it works

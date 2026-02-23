@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import posthog from 'posthog-js';
 
 /**
  * Solid, SSR-safe fallback page that force-opens the native app.
@@ -18,6 +19,9 @@ export default function WebSignUpConfirmation() {
     const hash = window.location.hash || '';
     const scheme = `com.trackbay://pages/SignUpConfirmation${qs}${hash}`;
     setHref(scheme);
+
+    // Track that the user arrived on the sign-up confirmation page
+    posthog.capture('signup_confirmation_deep_link_opened');
 
     // Try to open the app immediately
     const tipsTimer = setTimeout(() => setShowTips(true), 1500);

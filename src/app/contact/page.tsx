@@ -1,5 +1,6 @@
 import { Resend } from 'resend';
 import { redirect } from 'next/navigation';
+import { getPostHogClient } from '@/lib/posthog-server';
 
 export const runtime = 'nodejs'; // Ensure Node runtime for Resend
 
@@ -58,6 +59,17 @@ export default function ContactPage() {
       text: `De: ${email}\n\n${message}`,
       replyTo: email,
     });
+
+    // Track the successful contact form submission server-side
+    const posthog = getPostHogClient();
+    posthog.capture({
+      distinctId: email,
+      event: 'contact_form_submitted',
+      properties: {
+        message_length: message.length,
+      },
+    });
+    await posthog.shutdown();
 
     redirect('/contact/success');
   }
