@@ -133,7 +133,7 @@ export default function AppScreenshotsD() {
           whileInView="show"
           viewport={{ once: true, amount: 0.2 }}
           variants={stagger}
-          className="flex flex-col md:flex-row items-center justify-center gap-12 md:gap-16"
+          className="flex flex-col md:flex-row items-start justify-center gap-12 md:gap-16"
         >
           {/* ── Left: Phone ────────────────────────────────────────── */}
           <motion.div
@@ -199,35 +199,37 @@ export default function AppScreenshotsD() {
             </motion.div>
 
             {/* Animated tab content */}
-            <AnimatePresence mode="wait" custom={directionRef.current}>
-              <motion.div
-                key={current.id}
-                custom={directionRef.current}
-                variants={contentVariants}
-                initial="initial"
-                animate="animate"
-                exit="exit"
-                transition={{ duration: 0.35, ease: [0.4, 0, 0.2, 1] }}
-              >
-                {/* Feature tag pill */}
-                <span
-                  className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-medium mb-5 border ${current.accentBg} ${current.accentText} ${current.accentBorder}`}
+            <motion.div variants={fadeUp} className="min-h-[190px]">
+              <AnimatePresence mode="wait" custom={directionRef.current}>
+                <motion.div
+                  key={current.id}
+                  custom={directionRef.current}
+                  variants={contentVariants}
+                  initial="initial"
+                  animate="animate"
+                  exit="exit"
+                  transition={{ duration: 0.35, ease: [0.4, 0, 0.2, 1] }}
                 >
-                  ✦ {current.tag}
-                </span>
+                  {/* Feature tag pill */}
+                  <span
+                    className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-medium mb-5 border ${current.accentBg} ${current.accentText} ${current.accentBorder}`}
+                  >
+                    ✦ {current.tag}
+                  </span>
 
-                <h3 className="text-2xl md:text-3xl font-bold text-white mb-3 leading-tight">
-                  {current.title}
-                </h3>
+                  <h3 className="text-2xl md:text-3xl font-bold text-white mb-3 leading-tight">
+                    {current.title}
+                  </h3>
 
-                <p className="text-white/50 leading-relaxed text-sm md:text-base">
-                  {current.description}
-                </p>
-              </motion.div>
-            </AnimatePresence>
+                  <p className="text-white/50 leading-relaxed text-sm md:text-base">
+                    {current.description}
+                  </p>
+                </motion.div>
+              </AnimatePresence>
+            </motion.div>
 
             {/* Step indicators — always rendered, never animated out */}
-            <div className="flex items-center gap-2 mt-8">
+            <motion.div variants={fadeUp} className="flex items-center gap-2 mt-8">
               {TABS.map((tab, i) => (
                 <button
                   key={i}
@@ -241,7 +243,7 @@ export default function AppScreenshotsD() {
                   }}
                 />
               ))}
-            </div>
+            </motion.div>
           </div>
         </motion.div>
       </div>

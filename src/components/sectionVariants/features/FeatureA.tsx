@@ -24,12 +24,12 @@ function Feature({
   return (
     <motion.div
       variants={item}
-      className="w-full hover:cursor-default group"
+      className="w-full hover:cursor-default group h-full"
     >
       <div
         style={{ '--glow-color': accentColor.glow } as React.CSSProperties}
         className={[
-          'relative rounded-2xl p-6',
+          'relative rounded-2xl p-6 h-full',
           'bg-gradient-to-b from-white/[0.07] to-white/[0.02]',
           'border border-white/10',
           'transition-all duration-300',
@@ -78,9 +78,7 @@ export default function FeatureA() {
           <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-white">
             {t('title')}
           </h2>
-          <p className="mt-3 text-white/50">
-            {t('subtitle')}
-          </p>
+          <p className="mt-3 text-white/50">{t('subtitle')}</p>
         </motion.div>
 
         <div className="grid gap-4 md:grid-cols-3">

@@ -25,7 +25,7 @@ const SUBSCRIPTIONS = [
 function AnimatedCounter({ target }: { target: number }) {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true });
-  const count = useMotionValue(0);
+  const count = useMotionValue(100);
   const rounded = useTransform(count, (v) => Math.round(v));
 
   useEffect(() => {
@@ -82,7 +82,7 @@ export default function CtaB() {
               className="text-4xl md:text-5xl font-black tracking-tighter text-white leading-[1.1]"
             >
               {t('headlineBefore')}{' '}
-              <span className="text-brand-orange">
+              <span className="text-brand-orange tabular-nums">
                 <AnimatedCounter target={312} />€
               </span>{' '}
               {t('headlineAfter')}
