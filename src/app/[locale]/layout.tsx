@@ -3,6 +3,7 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { ModalProvider } from '@/providers/ModalProvider';
 import Header from '@/components/Header';
 import AppStoreModalMount from '@/components/AppStoreModalMount';
+import ScrollProgressBar from '@/components/ScrollProgressBar';
 import Footer from '@/components/Footer';
 import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
@@ -128,6 +129,8 @@ export default async function LocaleLayout({ children, params }: Props) {
           }}
         />
         <NextIntlClientProvider>
+          <ScrollProgressBar />
+
           <ModalProvider>
             <Header />
             <main className="flex-grow">{children}</main>
