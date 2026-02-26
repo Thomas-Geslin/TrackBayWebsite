@@ -1,6 +1,6 @@
 import { Resend } from 'resend';
 import { redirect } from '@/i18n/navigation';
-import { getPostHogClient } from '@/lib/posthog-server';
+import { getPostHogClient, shutdownPostHog } from '@/lib/posthog-server';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 
 export const runtime = 'nodejs'; // Ensure Node runtime for Resend
@@ -76,7 +76,7 @@ export default async function ContactPage({ params }: Props) {
         message_length: message.length,
       },
     });
-    await posthog.shutdown();
+    await shutdownPostHog();
 
     redirect({ href: '/contact/success', locale });
   }

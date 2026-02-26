@@ -179,7 +179,7 @@ export default function AppScreenshotsD() {
                     alt={tab.alt}
                     className="w-full"
                     sizes="(max-width: 768px) 208px, 240px"
-                    priority
+                    priority={tab.id === 'home'}
                   />
                 </motion.div>
               ))}

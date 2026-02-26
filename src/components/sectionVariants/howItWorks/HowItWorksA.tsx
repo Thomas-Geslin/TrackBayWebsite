@@ -1,19 +1,9 @@
 'use client';
 
 import Image from 'next/image';
-import { motion, type Variants } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { steps } from './steps';
-
-const easeInOut = [0.4, 0, 0.2, 1] as const;
-
-const fadeUp: Variants = {
-  hidden: { opacity: 0, y: 24 },
-  show: (i: number = 0) => ({
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.7, ease: easeInOut, delay: i * 0.15 },
-  }),
-};
+import { fadeUp } from '@/shared/animationVariants';
 
 export default function HowItWorksA() {
   return (

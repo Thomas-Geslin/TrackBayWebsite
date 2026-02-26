@@ -1,3 +1,5 @@
+'use client';
+
 import { useModal } from '@/providers/ModalProvider';
 import { fadeUp, stagger } from '@/shared/animationVariants';
 import { motion } from 'framer-motion';

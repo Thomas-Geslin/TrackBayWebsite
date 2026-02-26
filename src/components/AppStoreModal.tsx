@@ -41,7 +41,7 @@ export default function AppStoreModal({ onClose }: Props) {
     };
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
-  }, [onClose]);
+  }, [onClose, handleClose]);
 
   return createPortal(
     <div
@@ -88,6 +88,7 @@ export default function AppStoreModal({ onClose }: Props) {
           <a
             href="https://apps.apple.com/fr/app/trackbay/id6751021688"
             target="_blank"
+            rel="noopener noreferrer"
             onClick={() =>
               posthog.capture('app_store_download_clicked', { platform: 'ios' })
             }
@@ -115,6 +116,7 @@ export default function AppStoreModal({ onClose }: Props) {
           <a
             href="https://play.google.com/store/apps/details?id=com.thomasgeslin.trackbay"
             target="_blank"
+            rel="noopener noreferrer"
             onClick={() =>
               posthog.capture('google_play_download_clicked', {
                 platform: 'android',

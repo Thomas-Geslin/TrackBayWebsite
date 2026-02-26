@@ -32,7 +32,7 @@ function AnimatedCounter({ target }: { target: number }) {
     if (!inView) return;
     const controls = animate(count, target, { duration: 2.5, ease: 'easeOut' });
     return controls.stop;
-  }, [inView]);
+  }, [inView, count, target]);
 
   return <motion.span ref={ref}>{rounded}</motion.span>;
 }

@@ -1,3 +1,5 @@
+'use client';
+
 import { motion } from 'framer-motion';
 import { fadeUp, stagger, zoomInSoft } from '@/shared/animationVariants';
 import Image from 'next/image';
