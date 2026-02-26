@@ -15,7 +15,7 @@ export default async function Footer() {
       <div className="mx-auto max-w-6xl px-4 py-10">
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 items-start">
           {/* Left: Logo + tagline */}
-          <div className="flex items-center gap-6">
+          <div className="flex items-center gap-6 flex-col sm:flex-row">
             <div className="flex items-center gap-2">
               <Image
                 src={Logo}
@@ -31,31 +31,33 @@ export default async function Footer() {
           </div>
 
           {/* Right: Nav + store badges */}
-          <div className="flex flex-col items-start sm:items-end gap-4">
-            <nav className="flex items-center gap-6">
-              <Link
-                href="/privacy_policy"
-                className="text-sm text-white/60 hover:text-white/90 transition-colors"
-              >
-                {t('privacy')}
-              </Link>
+          <div className="flex flex-col gap-4 items-center sm:items-end">
+            <div className="flex flex-col items-center gap-4 sm:items-end lg:flex-row lg:items-center">
+              <nav className="flex items-center gap-6 flex-col sm:flex-row">
+                <Link
+                  href="/privacy_policy"
+                  className="text-sm text-white/60 hover:text-white/90 transition-colors"
+                >
+                  {t('privacy')}
+                </Link>
 
-              <Link
-                href="/terms"
-                className="text-sm text-white/60 hover:text-white/90 transition-colors"
-              >
-                {t('terms')}
-              </Link>
+                <Link
+                  href="/terms"
+                  className="text-sm text-white/60 hover:text-white/90 transition-colors"
+                >
+                  {t('terms')}
+                </Link>
 
-              <Link
-                href="/contact"
-                className="text-sm text-white/60 hover:text-white/90 transition-colors"
-              >
-                {t('contact')}
-              </Link>
+                <Link
+                  href="/contact"
+                  className="text-sm text-white/60 hover:text-white/90 transition-colors"
+                >
+                  {t('contact')}
+                </Link>
+              </nav>
 
-              {/* Separator */}
-              <div className="w-px h-4 bg-white/10 mx-1" />
+              {/* Separator — desktop only */}
+              <div className="hidden lg:block w-px h-4 bg-white/10" />
 
               {/* Store badges */}
               <div className="flex items-center gap-5">
@@ -87,7 +89,7 @@ export default async function Footer() {
                   />
                 </a>
               </div>
-            </nav>
+            </div>
           </div>
         </div>
 

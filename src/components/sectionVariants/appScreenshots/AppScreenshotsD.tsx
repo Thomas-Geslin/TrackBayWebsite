@@ -141,7 +141,7 @@ export default function AppScreenshotsD() {
           whileInView="show"
           viewport={{ once: true, amount: 0.2 }}
           variants={stagger}
-          className="flex flex-col md:flex-row items-start justify-center gap-12 md:gap-16"
+          className="flex flex-col md:flex-row items-center md:items-start justify-center gap-12 md:gap-16"
         >
           {/* ── Left: Phone ────────────────────────────────────────── */}
           <motion.div
@@ -191,7 +191,7 @@ export default function AppScreenshotsD() {
             {/* Tab buttons */}
             <motion.div
               variants={fadeUp}
-              className="flex gap-2 mb-10 flex-wrap"
+              className="flex gap-2 mb-10 flex-wrap justify-center md:justify-start"
             >
               {TABS.map((tab, i) => {
                 const isActive = i === activeIndex;
@@ -231,6 +231,7 @@ export default function AppScreenshotsD() {
                   animate="animate"
                   exit="exit"
                   transition={{ duration: 0.35, ease: [0.4, 0, 0.2, 1] }}
+                  className="text-center md:text-left"
                 >
                   {/* Feature tag pill */}
                   <span
@@ -253,7 +254,7 @@ export default function AppScreenshotsD() {
             {/* Step indicators — always rendered, never animated out */}
             <motion.div
               variants={fadeUp}
-              className="flex items-center gap-2 mt-8"
+              className="flex items-center gap-2 mt-8 justify-center md:justify-start"
             >
               {TABS.map((tab, i) => (
                 <button

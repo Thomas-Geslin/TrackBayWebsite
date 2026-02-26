@@ -12,7 +12,7 @@ export default function ScrollProgressBar() {
   });
 
   return (
-    <div className="fixed right-0 top-0 w-[5px] h-full z-50 bg-bg-deep">
+    <div className="hidden sm:block fixed right-0 top-0 w-[5px] h-full z-50 bg-bg-deep">
       <motion.div
         className="w-full origin-top"
         style={{

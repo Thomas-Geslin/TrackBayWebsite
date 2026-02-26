@@ -18,7 +18,7 @@ export default function Header() {
   return (
     <header className="fixed inset-x-3 sm:inset-x-6 top-3 sm:top-4 z-50 mx-auto max-w-6xl">
       <div
-        className="flex items-center justify-between px-8 py-5 rounded-2xl border border-white/[0.08] backdrop-blur-md"
+        className="flex items-center justify-between px-4 py-3 sm:px-8 sm:py-5 rounded-2xl border border-white/[0.08] backdrop-blur-md"
         style={{
           background: 'color-mix(in srgb, var(--background) 65%, transparent)',
           boxShadow:
