@@ -1,11 +1,18 @@
 import './globals.css';
 
+import { Inter } from 'next/font/google';
 import { ModalProvider } from '../providers/ModalProvider';
 import Header from '../components/Header';
 import AppStoreModalMount from '../components/AppStoreModalMount';
 import Footer from '@/components/Footer';
 import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
+
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-inter',
+  display: 'swap',
+});
 
 export const metadata = {
   title: 'TrackBay — Track your monthly expenses',
@@ -31,9 +38,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className="h-full"
+      className={`h-full ${inter.variable}`}
     >
-      <body className="h-full flex flex-col text-[#30303c] antialiased">
+      <body className="h-full flex flex-col antialiased">
         <ModalProvider>
           <Header />
           <main className="flex-grow">{children}</main>

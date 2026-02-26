@@ -62,7 +62,7 @@ export default function AppStoreModal({ onClose }: Props) {
         animate={{ opacity: 1, scale: 1 }}
         exit={{ opacity: 0, scale: 0.96 }}
         transition={{ duration: 0.25, ease: EASE }}
-        className="relative w-[92%] max-w-md rounded-2xl bg-[#0E0E12] p-6 shadow-2xl outline-1 outline-white/10"
+        className="relative w-[92%] max-w-md rounded-2xl bg-background p-6 shadow-2xl outline-1 outline-white/10"
       >
         <button
           ref={closeBtnRef}

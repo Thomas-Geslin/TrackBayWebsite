@@ -77,7 +77,7 @@ export default function ContactPage() {
   return (
     <main className="flex min-h-screen items-center justify-center px-4">
       <div className="mx-auto max-w-lg">
-        <div className="rounded-2xl border border-black/10 bg-[#0E0E12] p-6 shadow-lg ring-1 ring-white/5 md:p-8">
+        <div className="rounded-2xl border border-black/10 bg-background p-6 shadow-lg ring-1 ring-white/5 md:p-8">
           <header className="mb-6">
             <h1 className="text-2xl font-semibold tracking-tight">Contact</h1>
             <p className="mt-1 text-sm text-white/60">
