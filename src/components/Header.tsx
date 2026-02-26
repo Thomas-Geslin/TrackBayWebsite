@@ -2,7 +2,7 @@
 
 import { Link } from '@/i18n/navigation';
 import Image from 'next/image';
-import Logo from '../../public/images/logo.png';
+import Logo from '../../public/images/logo.jpg';
 import Apple from '../../public/images/apple-logo.png';
 import GooglePlay from '../../public/images/google-play-logo.png';
 import posthog from 'posthog-js';
@@ -41,7 +41,7 @@ export default function Header() {
               priority
             />
           </div>
-          
+
           <span className="font-semibold text-white/90 group-hover:text-white transition-colors ml-1">
             TrackBay
           </span>

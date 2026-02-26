@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { Bell, TrendingDown } from 'lucide-react';
 import { fadeUp, stagger, zoomInSoft } from '@/shared/animationVariants';
-import Mockup from '../../../../public/images/app_preview.png';
+import Mockup from '../../../../public/images/app_preview.jpg';
 
 function FloatingCard({
   className,
@@ -72,7 +72,11 @@ export default function AppScreenshotsC() {
           >
             See TrackBay in action
           </motion.h2>
-          <motion.p variants={fadeUp} custom={1} className="mt-3 text-white/50">
+          <motion.p
+            variants={fadeUp}
+            custom={1}
+            className="mt-3 text-white/50"
+          >
             Everything you need, elegantly presented.
           </motion.p>
         </motion.div>
@@ -106,7 +110,11 @@ export default function AppScreenshotsC() {
           >
             <motion.div
               animate={{ y: [0, -9, 0] }}
-              transition={{ duration: 5.5, repeat: Infinity, ease: 'easeInOut' }}
+              transition={{
+                duration: 5.5,
+                repeat: Infinity,
+                ease: 'easeInOut',
+              }}
             >
               <Image
                 src={Mockup}
@@ -182,10 +190,15 @@ export default function AppScreenshotsC() {
           >
             <div className="flex items-start gap-2.5 max-w-[158px]">
               <div className="mt-0.5 w-7 h-7 rounded-lg bg-brand-purple/20 flex items-center justify-center flex-shrink-0">
-                <Bell size={12} className="text-brand-purple-light" />
+                <Bell
+                  size={12}
+                  className="text-brand-purple-light"
+                />
               </div>
               <div>
-                <p className="text-xs font-semibold text-white">Renewal in 2 days</p>
+                <p className="text-xs font-semibold text-white">
+                  Renewal in 2 days
+                </p>
                 <p className="text-[11px] text-white/40">Spotify · 9.99€</p>
               </div>
             </div>
@@ -201,10 +214,18 @@ export default function AppScreenshotsC() {
           >
             <motion.div
               animate={{ y: [0, -4, 0] }}
-              transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
+              transition={{
+                duration: 6,
+                repeat: Infinity,
+                ease: 'easeInOut',
+                delay: 1,
+              }}
               className="flex items-center gap-2 bg-bg-surface/75 backdrop-blur-md border border-white/10 rounded-full px-5 py-2 shadow-xl whitespace-nowrap"
             >
-              <TrendingDown size={13} className="text-brand-green" />
+              <TrendingDown
+                size={13}
+                className="text-brand-green"
+              />
               <span className="text-xs text-white/65">
                 Saved{' '}
                 <span className="text-brand-green font-semibold">€48</span> vs

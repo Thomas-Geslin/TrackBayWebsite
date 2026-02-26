@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import { Link } from '@/i18n/navigation';
 import Image from 'next/image';
 import { fadeUp, stagger, zoomInSoft } from '@/shared/animationVariants';
-import Mockup from '../../../../public/images/app_preview.png';
+import Mockup from '../../../../public/images/app_preview.jpg';
 import { useModal } from '@/providers/ModalProvider';
 import posthog from 'posthog-js';
 import { useTranslations } from 'next-intl';
@@ -173,13 +173,14 @@ export default function HeroA() {
           <motion.div
             animate={{ y: [0, -10, 0] }}
             transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
-            className="relative overflow-hidden"
+            className="relative overflow-hidden rounded-[3rem]"
             style={{ filter: 'drop-shadow(0 0 40px var(--purple-glow))' }}
           >
             <Image
               src={Mockup}
               alt={t('mockupAlt')}
               className="w-full"
+              sizes="(max-width: 480px) 90vw, 320px"
               priority
             />
           </motion.div>

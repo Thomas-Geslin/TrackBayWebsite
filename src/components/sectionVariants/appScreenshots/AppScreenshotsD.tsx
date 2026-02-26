@@ -6,9 +6,9 @@ import Image from 'next/image';
 import type { StaticImageData } from 'next/image';
 import { BarChart3, Bell, Home } from 'lucide-react';
 import { fadeUp, stagger } from '@/shared/animationVariants';
-import Mockup from '../../../../public/images/app_preview.png';
-import Spending from '../../../../public/images/spending.png';
-import Notification from '../../../../public/images/notification.png';
+import Mockup from '../../../../public/images/app_preview.jpg';
+import Spending from '../../../../public/images/spending.jpg';
+import Notification from '../../../../public/images/notification.jpg';
 import { useTranslations } from 'next-intl';
 
 type Tab = {
@@ -126,7 +126,11 @@ export default function AppScreenshotsD() {
             {t('title')}
           </motion.h2>
 
-          <motion.p variants={fadeUp} custom={1} className="mt-3 text-white/50">
+          <motion.p
+            variants={fadeUp}
+            custom={1}
+            className="mt-3 text-white/50"
+          >
             {t('subtitle')}
           </motion.p>
         </motion.div>
@@ -153,7 +157,7 @@ export default function AppScreenshotsD() {
             />
 
             {/* Phone image — all pre-rendered, opacity-switched to avoid decode stall */}
-            <div className="relative">
+            <div className="relative overflow-hidden rounded-[2.1rem]">
               {TABS.map((tab) => (
                 <motion.div
                   key={tab.id}
@@ -163,13 +167,18 @@ export default function AppScreenshotsD() {
                     y: tab.id === current.id ? 0 : 10,
                   }}
                   transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
-                  className={tab.id === current.id ? 'relative' : 'absolute inset-0'}
-                  style={{ pointerEvents: tab.id === current.id ? 'auto' : 'none' }}
+                  className={
+                    tab.id === current.id ? 'relative' : 'absolute inset-0'
+                  }
+                  style={{
+                    pointerEvents: tab.id === current.id ? 'auto' : 'none',
+                  }}
                 >
                   <Image
                     src={tab.image}
                     alt={tab.alt}
                     className="w-full"
+                    sizes="(max-width: 768px) 208px, 240px"
                     priority
                   />
                 </motion.div>
@@ -180,7 +189,10 @@ export default function AppScreenshotsD() {
           {/* ── Right: Tab selector + content ──────────────────────── */}
           <div className="flex-1 w-full max-w-md">
             {/* Tab buttons */}
-            <motion.div variants={fadeUp} className="flex gap-2 mb-10 flex-wrap">
+            <motion.div
+              variants={fadeUp}
+              className="flex gap-2 mb-10 flex-wrap"
+            >
               {TABS.map((tab, i) => {
                 const isActive = i === activeIndex;
 
@@ -203,8 +215,14 @@ export default function AppScreenshotsD() {
             </motion.div>
 
             {/* Animated tab content */}
-            <motion.div variants={fadeUp} className="min-h-[190px]">
-              <AnimatePresence mode="wait" custom={directionRef.current}>
+            <motion.div
+              variants={fadeUp}
+              className="min-h-[190px]"
+            >
+              <AnimatePresence
+                mode="wait"
+                custom={directionRef.current}
+              >
                 <motion.div
                   key={current.id}
                   custom={directionRef.current}
@@ -233,7 +251,10 @@ export default function AppScreenshotsD() {
             </motion.div>
 
             {/* Step indicators — always rendered, never animated out */}
-            <motion.div variants={fadeUp} className="flex items-center gap-2 mt-8">
+            <motion.div
+              variants={fadeUp}
+              className="flex items-center gap-2 mt-8"
+            >
               {TABS.map((tab, i) => (
                 <button
                   key={i}
@@ -242,7 +263,9 @@ export default function AppScreenshotsD() {
                   style={{
                     width: i === activeIndex ? 24 : 6,
                     background:
-                      i === activeIndex ? tab.dotColor : 'rgba(255,255,255,0.2)',
+                      i === activeIndex
+                        ? tab.dotColor
+                        : 'rgba(255,255,255,0.2)',
                     transition: 'width 0.6s ease, background 0.6s ease',
                   }}
                 />

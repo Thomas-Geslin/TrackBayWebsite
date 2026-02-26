@@ -4,9 +4,9 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { Receipt, Layers, BellRing } from 'lucide-react';
 import { stagger, item, fadeUp } from '@/shared/animationVariants';
-import Mockup from '../../../../public/images/app_preview.png';
-import Spending from '../../../../public/images/spending.png';
-import Notification from '../../../../public/images/notification.png';
+import Mockup from '../../../../public/images/app_preview.jpg';
+import Spending from '../../../../public/images/spending.jpg';
+import Notification from '../../../../public/images/notification.jpg';
 
 const STEPS = [
   {
@@ -46,7 +46,10 @@ const STEPS = [
 
 export default function AppScreenshotsB() {
   return (
-    <section id="how" className="relative overflow-hidden bg-background py-24">
+    <section
+      id="how"
+      className="relative overflow-hidden bg-background py-24"
+    >
       {/* Ambient glow */}
       <div
         className="pointer-events-none absolute inset-0 -z-10"
@@ -103,27 +106,37 @@ export default function AppScreenshotsB() {
                   src={step.image}
                   alt={step.title}
                   className="relative w-36 md:w-40"
-                  style={{ filter: 'drop-shadow(0 12px 32px rgba(0,0,0,0.45))' }}
+                  style={{
+                    filter: 'drop-shadow(0 12px 32px rgba(0,0,0,0.45))',
+                  }}
                 />
               </div>
 
               {/* Step info */}
               <div className="px-6 py-6 border-t border-white/[0.06]">
                 <div className="flex items-center gap-3 mb-4">
-                  <span className={`text-xs font-black tabular-nums ${step.accentText} opacity-60`}>
+                  <span
+                    className={`text-xs font-black tabular-nums ${step.accentText} opacity-60`}
+                  >
                     {step.idx}
                   </span>
                   <div
                     className={`w-8 h-8 rounded-lg flex items-center justify-center border ${step.accentBg} ${step.accentBorder}`}
                   >
-                    <step.Icon size={15} className={step.accentText} strokeWidth={1.75} />
+                    <step.Icon
+                      size={15}
+                      className={step.accentText}
+                      strokeWidth={1.75}
+                    />
                   </div>
                 </div>
 
                 <h3 className="font-semibold text-white text-base leading-snug mb-1.5">
                   {step.title}
                 </h3>
-                <p className="text-sm text-white/45 leading-relaxed">{step.desc}</p>
+                <p className="text-sm text-white/45 leading-relaxed">
+                  {step.desc}
+                </p>
               </div>
             </motion.div>
           ))}

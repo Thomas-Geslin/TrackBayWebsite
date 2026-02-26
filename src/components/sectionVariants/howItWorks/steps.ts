@@ -1,6 +1,6 @@
-import Mockup from '../../../../public/images/app_preview.png';
-import Spending from '../../../../public/images/spending.png';
-import Notification from '../../../../public/images/notification.png';
+import Mockup from '../../../../public/images/app_preview.jpg';
+import Spending from '../../../../public/images/spending.jpg';
+import Notification from '../../../../public/images/notification.jpg';
 
 export const steps = [
   {

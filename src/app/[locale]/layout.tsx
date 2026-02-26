@@ -52,7 +52,14 @@ export async function generateMetadata({ params }: Props) {
       siteName: 'TrackBay',
       locale: ogLocaleMap[locale] ?? 'en_US',
       type: 'website',
-      images: [{ url: '/images/og-image.png', width: 1200, height: 630, alt: 'TrackBay — Subscription Tracker App' }],
+      images: [
+        {
+          url: '/images/og-image.png',
+          width: 1200,
+          height: 630,
+          alt: 'TrackBay — Subscription Tracker App',
+        },
+      ],
     },
     twitter: {
       card: 'summary_large_image',
@@ -98,7 +105,8 @@ export default async function LocaleLayout({ children, params }: Props) {
               },
               description:
                 'Track all your subscriptions and recurring bills. Get reminders before payments hit. No bank connection required.',
-              downloadUrl: 'https://apps.apple.com/fr/app/trackbay/id6751021688',
+              downloadUrl:
+                'https://apps.apple.com/fr/app/trackbay/id6751021688',
             }),
           }}
         />
@@ -110,7 +118,7 @@ export default async function LocaleLayout({ children, params }: Props) {
               '@type': 'Organization',
               name: 'TrackBay',
               url: 'https://trackbayapp.com',
-              logo: 'https://trackbayapp.com/images/logo.png',
+              logo: 'https://trackbayapp.com/images/logo.jpg',
               contactPoint: {
                 '@type': 'ContactPoint',
                 contactType: 'customer support',
