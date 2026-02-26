@@ -59,6 +59,14 @@ export default function HeroA() {
         viewport={{ once: true, amount: 0.2 }}
         variants={stagger}
       >
+        {/* SEO H1 — small, keyword-rich, visually subtle */}
+        <motion.h1
+          variants={fadeUp}
+          className="text-xs font-semibold tracking-widest uppercase text-white/35 mb-5"
+        >
+          {t('seoTitle')}
+        </motion.h1>
+
         {/* Badge pill */}
         <motion.div
           variants={fadeUp}
@@ -79,8 +87,8 @@ export default function HeroA() {
           </span>
         </motion.div>
 
-        {/* H1 */}
-        <motion.h1
+        {/* H2 — emotional headline */}
+        <motion.h2
           variants={fadeUp}
           custom={1}
           className="text-5xl md:text-7xl font-black tracking-tighter text-white leading-[1.05]"
@@ -91,7 +99,7 @@ export default function HeroA() {
           </span>
           <br />
           {t('headlineAfter')}
-        </motion.h1>
+        </motion.h2>
 
         {/* Subtitle */}
         <motion.p
@@ -122,6 +130,15 @@ export default function HeroA() {
             {t('ctaScroll')}
           </a>
         </motion.div>
+
+        {/* CTA subtext */}
+        <motion.p
+          variants={fadeUp}
+          custom={3.5}
+          className="mt-3 text-xs text-white/35"
+        >
+          {t('ctaSubtext')}
+        </motion.p>
 
         {/* Terms notice */}
         <motion.p
@@ -161,7 +178,7 @@ export default function HeroA() {
           >
             <Image
               src={Mockup}
-              alt="App preview"
+              alt={t('mockupAlt')}
               className="w-full"
               priority
             />

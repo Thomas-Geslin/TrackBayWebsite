@@ -1,9 +1,9 @@
 {
   "Metadata": {
-    "title": "TrackBay — Track your monthly expenses",
-    "description": "Centralize your rent, bills & subscriptions — get reminders before they hit. No bank connection. Private by design.",
-    "ogTitle": "TrackBay — Track your monthly expenses",
-    "ogDescription": "Centralize your rent, bills & subscriptions — get reminders before they hit."
+    "title": "TrackBay — Subscription Tracker App for iOS & Android",
+    "description": "Track all your subscriptions and recurring bills in one place. Get reminders before payments hit. No bank connection. Free on App Store & Google Play.",
+    "ogTitle": "TrackBay — Subscription Tracker App for iOS & Android",
+    "ogDescription": "Track all your subscriptions and recurring bills in one place. Get reminders before payments hit. No bank connection required."
   },
   "Header": {
     "features": "Features",
@@ -29,13 +29,16 @@
     "closeLabel": "Close"
   },
   "Hero": {
+    "seoTitle": "Subscription Tracker App",
     "badge": "Your subscriptions, finally under control",
     "headlineBefore": "Never be",
     "headlineHighlight": "surprised",
     "headlineAfter": "by a bill again.",
     "subtitle": "Centralize every fixed expense, get notified before it hits. No bank connection. Just clarity.",
     "ctaApp": "Get the app",
+    "ctaSubtext": "Available free on iOS & Android",
     "ctaScroll": "See how it works ↓",
+    "mockupAlt": "TrackBay app — subscription tracker home screen",
     "legalText": "By using TrackBay you agree to our",
     "legalTerms": "Terms",
     "legalAnd": "and",
@@ -49,7 +52,7 @@
   },
   "Features": {
     "title": "Everything in one place",
-    "subtitle": "No complexity. No bank connection. Just your subscriptions, organized.",
+    "subtitle": "The simplest subscription tracker for iOS and Android. No complexity, no bank connection — just your recurring bills, organized and under control.",
     "card1Title": "One clear monthly total",
     "card1Desc": "See all your fixed expenses in one place — rent, bills, insurance, subscriptions.",
     "card2Title": "Smart reminders",
@@ -64,14 +67,17 @@
     "tab1Title": "Your monthly overview",
     "tab1Desc": "See every subscription, bill, and recurring expense in one clear view. No hidden charges, no end-of-month surprises.",
     "tab1Tag": "15 subscriptions tracked",
+    "tab1Alt": "TrackBay app — subscription tracker home screen",
     "tab2Label": "Analytics",
     "tab2Title": "Spending trends at a glance",
     "tab2Desc": "Understand how your fixed costs evolve month over month. Spot upward trends and identify where to cut back.",
     "tab2Tag": "3 months history",
+    "tab2Alt": "TrackBay analytics — monthly subscription spending overview",
     "tab3Label": "Alerts",
     "tab3Title": "Never miss a renewal",
     "tab3Desc": "Get notified days before a payment hits. Cancel on time, never overpay for something you forgot about.",
-    "tab3Tag": "Smart alerts"
+    "tab3Tag": "Smart alerts",
+    "tab3Alt": "TrackBay reminder — push notification before subscription renewal"
   },
   "Cta": {
     "badge": "Did you know?",
@@ -95,7 +101,17 @@
     "q4": "Is my data secure?",
     "a4": "Your data is encrypted and stored securely. We never sell it.",
     "q5": "How do reminders work?",
-    "a5": "You receive a push notification 2 days before each scheduled payment date."
+    "a5": "You receive a push notification 2 days before each scheduled payment date.",
+    "q6": "What types of subscriptions can I track?",
+    "a6": "Anything recurring — Netflix, Spotify, rent, insurance, utilities, gym memberships. If it repeats, TrackBay tracks it.",
+    "q7": "Can I track annual subscriptions?",
+    "a7": "Yes, TrackBay supports weekly, monthly, and annual billing cycles.",
+    "q8": "Does TrackBay work without an internet connection?",
+    "a8": "Your subscription list is cached locally, so you can view it offline.",
+    "q9": "How many subscriptions can I add?",
+    "a9": "There is no limit. Add as many subscriptions as you need.",
+    "q10": "What's the difference between TrackBay and checking my bank statement?",
+    "a10": "TrackBay shows upcoming payments before they happen, not after. You get notified days in advance so you can cancel or budget accordingly."
   },
   "Contact": {
     "heading": "Contact",

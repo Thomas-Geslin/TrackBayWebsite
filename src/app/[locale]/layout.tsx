@@ -52,6 +52,11 @@ export async function generateMetadata({ params }: Props) {
       siteName: 'TrackBay',
       locale: ogLocaleMap[locale] ?? 'en_US',
       type: 'website',
+      images: [{ url: '/images/og-image.png', width: 1200, height: 630, alt: 'TrackBay — Subscription Tracker App' }],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      images: ['/images/og-image.png'],
     },
   };
 }
@@ -77,6 +82,43 @@ export default async function LocaleLayout({ children, params }: Props) {
       className={`h-full ${inter.variable}`}
     >
       <body className="h-full flex flex-col antialiased">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'SoftwareApplication',
+              name: 'TrackBay',
+              operatingSystem: 'iOS, Android',
+              applicationCategory: 'FinanceApplication',
+              offers: {
+                '@type': 'Offer',
+                price: '0',
+                priceCurrency: 'EUR',
+              },
+              description:
+                'Track all your subscriptions and recurring bills. Get reminders before payments hit. No bank connection required.',
+              downloadUrl: 'https://apps.apple.com/fr/app/trackbay/id6751021688',
+            }),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'Organization',
+              name: 'TrackBay',
+              url: 'https://trackbayapp.com',
+              logo: 'https://trackbayapp.com/images/logo.png',
+              contactPoint: {
+                '@type': 'ContactPoint',
+                contactType: 'customer support',
+                url: 'https://trackbayapp.com/contact',
+              },
+            }),
+          }}
+        />
         <NextIntlClientProvider>
           <ModalProvider>
             <Header />

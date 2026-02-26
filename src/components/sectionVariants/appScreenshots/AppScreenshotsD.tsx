@@ -14,6 +14,7 @@ import { useTranslations } from 'next-intl';
 type Tab = {
   id: string;
   label: string;
+  alt: string;
   Icon: React.ElementType;
   title: string;
   description: string;
@@ -40,6 +41,7 @@ export default function AppScreenshotsD() {
     {
       id: 'home',
       label: t('tab1Label'),
+      alt: t('tab1Alt'),
       Icon: Home,
       title: t('tab1Title'),
       description: t('tab1Desc'),
@@ -54,6 +56,7 @@ export default function AppScreenshotsD() {
     {
       id: 'analytics',
       label: t('tab2Label'),
+      alt: t('tab2Alt'),
       Icon: BarChart3,
       title: t('tab2Title'),
       description: t('tab2Desc'),
@@ -68,6 +71,7 @@ export default function AppScreenshotsD() {
     {
       id: 'alerts',
       label: t('tab3Label'),
+      alt: t('tab3Alt'),
       Icon: Bell,
       title: t('tab3Title'),
       description: t('tab3Desc'),
@@ -164,7 +168,7 @@ export default function AppScreenshotsD() {
                 >
                   <Image
                     src={tab.image}
-                    alt={tab.label}
+                    alt={tab.alt}
                     className="w-full"
                     priority
                   />

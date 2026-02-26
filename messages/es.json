@@ -1,9 +1,9 @@
 {
   "Metadata": {
-    "title": "TrackBay — Controla tus gastos mensuales",
-    "description": "Centraliza tus alquileres, facturas y suscripciones — recibe recordatorios antes de los cobros. Sin conexión bancaria. Privacidad por diseño.",
-    "ogTitle": "TrackBay — Controla tus gastos mensuales",
-    "ogDescription": "Centraliza tus alquileres, facturas y suscripciones — recibe recordatorios antes de los cobros."
+    "title": "TrackBay — App para controlar tus suscripciones",
+    "description": "Gestiona todos tus suscripciones y gastos recurrentes en un solo lugar. Alertas antes de cada cobro. Sin acceso bancario. Gratis en App Store y Google Play.",
+    "ogTitle": "TrackBay — App para controlar tus suscripciones",
+    "ogDescription": "Gestiona todos tus suscripciones y gastos recurrentes en un solo lugar. Alertas antes de cada cobro. Sin acceso bancario."
   },
   "Header": {
     "features": "Funciones",
@@ -29,13 +29,16 @@
     "closeLabel": "Cerrar"
   },
   "Hero": {
+    "seoTitle": "App para controlar tus suscripciones",
     "badge": "Tus suscripciones, finalmente bajo control",
     "headlineBefore": "Nunca más te",
     "headlineHighlight": "sorprendas",
     "headlineAfter": "con una factura.",
     "subtitle": "Centraliza cada gasto fijo, recibe alertas antes del cobro. Sin conexión bancaria. Solo claridad.",
     "ctaApp": "Descargar la app",
+    "ctaSubtext": "Gratis en iOS & Android",
     "ctaScroll": "Ver cómo funciona ↓",
+    "mockupAlt": "App TrackBay — pantalla de inicio del rastreador de suscripciones",
     "legalText": "Al usar TrackBay aceptas nuestros",
     "legalTerms": "Términos",
     "legalAnd": "y nuestra",
@@ -49,7 +52,7 @@
   },
   "Features": {
     "title": "Todo en un solo lugar",
-    "subtitle": "Sin complejidad. Sin conexión bancaria. Solo tus suscripciones, organizadas.",
+    "subtitle": "La app para rastrear suscripciones más sencilla para iOS y Android. Sin complejidad, sin conexión bancaria — solo tus facturas recurrentes, organizadas y bajo control.",
     "card1Title": "Un total mensual claro",
     "card1Desc": "Ve todos tus gastos fijos en un solo lugar — alquiler, facturas, seguros, suscripciones.",
     "card2Title": "Recordatorios inteligentes",
@@ -64,14 +67,17 @@
     "tab1Title": "Tu resumen mensual",
     "tab1Desc": "Ve cada suscripción, factura y gasto recurrente en una vista clara. Sin cargos ocultos, sin sorpresas a fin de mes.",
     "tab1Tag": "15 suscripciones rastreadas",
+    "tab1Alt": "App TrackBay — pantalla de inicio del rastreador de suscripciones",
     "tab2Label": "Análisis",
     "tab2Title": "Tendencias de gasto de un vistazo",
     "tab2Desc": "Entiende cómo evolucionan tus costes fijos mes a mes. Detecta tendencias al alza e identifica dónde recortar.",
     "tab2Tag": "3 meses de historial",
+    "tab2Alt": "TrackBay análisis — resumen mensual de gasto en suscripciones",
     "tab3Label": "Alertas",
     "tab3Title": "No te pierdas ninguna renovación",
     "tab3Desc": "Recibe notificaciones días antes de un cobro. Cancela a tiempo, nunca pagues de más por algo que olvidaste.",
-    "tab3Tag": "Alertas inteligentes"
+    "tab3Tag": "Alertas inteligentes",
+    "tab3Alt": "TrackBay recordatorio — notificación push antes de la renovación de una suscripción"
   },
   "Cta": {
     "badge": "¿Sabías que...?",
@@ -95,7 +101,17 @@
     "q4": "¿Están seguros mis datos?",
     "a4": "Tus datos están cifrados y almacenados de forma segura. Nunca los vendemos.",
     "q5": "¿Cómo funcionan los recordatorios?",
-    "a5": "Recibes una notificación push 2 días antes de cada fecha de cobro programada."
+    "a5": "Recibes una notificación push 2 días antes de cada fecha de cobro programada.",
+    "q6": "¿Qué tipos de suscripciones puedo rastrear?",
+    "a6": "Cualquier cosa recurrente — Netflix, Spotify, alquiler, seguros, suministros, gimnasio. Si se repite, TrackBay lo rastrea.",
+    "q7": "¿Puedo rastrear suscripciones anuales?",
+    "a7": "Sí, TrackBay soporta ciclos de facturación semanales, mensuales y anuales.",
+    "q8": "¿TrackBay funciona sin conexión a internet?",
+    "a8": "Tu lista de suscripciones se almacena en caché localmente, por lo que puedes verla sin conexión.",
+    "q9": "¿Cuántas suscripciones puedo añadir?",
+    "a9": "No hay límite. Añade tantas suscripciones como necesites.",
+    "q10": "¿Cuál es la diferencia entre TrackBay y revisar mi extracto bancario?",
+    "a10": "TrackBay muestra los pagos próximos antes de que ocurran, no después. Recibes alertas con días de antelación para poder cancelar o planificar tu presupuesto."
   },
   "Contact": {
     "heading": "Contacto",

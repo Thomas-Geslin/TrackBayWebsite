@@ -1,9 +1,9 @@
 {
   "Metadata": {
-    "title": "TrackBay — Suivez vos dépenses mensuelles",
-    "description": "Centralisez vos loyers, factures et abonnements — recevez des rappels avant les prélèvements. Sans connexion bancaire. Privé par conception.",
-    "ogTitle": "TrackBay — Suivez vos dépenses mensuelles",
-    "ogDescription": "Centralisez vos loyers, factures et abonnements — recevez des rappels avant les prélèvements."
+    "title": "TrackBay — Application pour gérer vos abonnements",
+    "description": "Centralisez tous vos abonnements et dépenses récurrentes. Recevez des alertes avant chaque prélèvement. Sans connexion bancaire. Gratuit sur iOS et Android.",
+    "ogTitle": "TrackBay — Application pour gérer vos abonnements",
+    "ogDescription": "Centralisez tous vos abonnements et dépenses récurrentes. Recevez des alertes avant chaque prélèvement. Sans connexion bancaire."
   },
   "Header": {
     "features": "Fonctionnalités",
@@ -29,13 +29,16 @@
     "closeLabel": "Fermer"
   },
   "Hero": {
+    "seoTitle": "Application pour suivre vos abonnements",
     "badge": "Vos abonnements, enfin sous contrôle",
     "headlineBefore": "Ne soyez plus jamais",
     "headlineHighlight": "surpris",
     "headlineAfter": "par une facture.",
     "subtitle": "Centralisez chaque dépense fixe, soyez notifié avant le prélèvement. Sans connexion bancaire. Juste de la clarté.",
     "ctaApp": "Télécharger l'app",
+    "ctaSubtext": "Gratuit sur iOS & Android",
     "ctaScroll": "Voir comment ça marche ↓",
+    "mockupAlt": "Application TrackBay — écran d'accueil du suivi d'abonnements",
     "legalText": "En utilisant TrackBay, vous acceptez nos",
     "legalTerms": "Conditions",
     "legalAnd": "et notre",
@@ -49,7 +52,7 @@
   },
   "Features": {
     "title": "Tout en un seul endroit",
-    "subtitle": "Sans complexité. Sans connexion bancaire. Juste vos abonnements, organisés.",
+    "subtitle": "L'application de suivi d'abonnements la plus simple pour iOS et Android. Sans complexité, sans connexion bancaire — juste vos factures récurrentes, organisées et sous contrôle.",
     "card1Title": "Un total mensuel clair",
     "card1Desc": "Voyez toutes vos dépenses fixes en un seul endroit — loyer, factures, assurances, abonnements.",
     "card2Title": "Rappels intelligents",
@@ -64,14 +67,17 @@
     "tab1Title": "Votre vue mensuelle",
     "tab1Desc": "Voyez chaque abonnement, facture et dépense récurrente en un seul coup d'œil. Aucune surprise en fin de mois.",
     "tab1Tag": "15 abonnements suivis",
+    "tab1Alt": "Application TrackBay — écran d'accueil du suivi d'abonnements",
     "tab2Label": "Analytique",
     "tab2Title": "Tendances de dépenses en un coup d'œil",
     "tab2Desc": "Comprenez comment vos coûts fixes évoluent mois après mois. Repérez les hausses et identifiez où réduire.",
     "tab2Tag": "3 mois d'historique",
+    "tab2Alt": "TrackBay analytique — vue d'ensemble des dépenses mensuelles en abonnements",
     "tab3Label": "Alertes",
     "tab3Title": "Ne manquez jamais un renouvellement",
     "tab3Desc": "Soyez notifié quelques jours avant un prélèvement. Annulez à temps, ne payez plus pour l'oubli.",
-    "tab3Tag": "Alertes intelligentes"
+    "tab3Tag": "Alertes intelligentes",
+    "tab3Alt": "TrackBay rappel — notification push avant le renouvellement d'un abonnement"
   },
   "Cta": {
     "badge": "Le saviez-vous ?",
@@ -95,7 +101,17 @@
     "q4": "Mes données sont-elles en sécurité ?",
     "a4": "Vos données sont chiffrées et stockées de façon sécurisée. Nous ne les vendons jamais.",
     "q5": "Comment fonctionnent les rappels ?",
-    "a5": "Vous recevez une notification push 2 jours avant chaque date de prélèvement configurée."
+    "a5": "Vous recevez une notification push 2 jours avant chaque date de prélèvement configurée.",
+    "q6": "Quels types d'abonnements puis-je suivre ?",
+    "a6": "Tout ce qui est récurrent — Netflix, Spotify, loyer, assurance, factures, salle de sport. Si ça se répète, TrackBay le suit.",
+    "q7": "Puis-je suivre des abonnements annuels ?",
+    "a7": "Oui, TrackBay supporte les cycles de facturation hebdomadaires, mensuels et annuels.",
+    "q8": "TrackBay fonctionne-t-il sans connexion internet ?",
+    "a8": "Votre liste d'abonnements est mise en cache localement, vous pouvez donc la consulter hors ligne.",
+    "q9": "Combien d'abonnements puis-je ajouter ?",
+    "a9": "Il n'y a pas de limite. Ajoutez autant d'abonnements que vous le souhaitez.",
+    "q10": "Quelle est la différence entre TrackBay et mon relevé bancaire ?",
+    "a10": "TrackBay affiche les paiements à venir avant qu'ils surviennent, pas après. Vous êtes alerté des jours à l'avance pour pouvoir annuler ou budgétiser en conséquence."
   },
   "Contact": {
     "heading": "Contact",

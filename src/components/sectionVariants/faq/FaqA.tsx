@@ -53,10 +53,32 @@ export default function FaqA() {
     { question: t('q3'), answer: t('a3') },
     { question: t('q4'), answer: t('a4') },
     { question: t('q5'), answer: t('a5') },
+    { question: t('q6'), answer: t('a6') },
+    { question: t('q7'), answer: t('a7') },
+    { question: t('q8'), answer: t('a8') },
+    { question: t('q9'), answer: t('a9') },
+    { question: t('q10'), answer: t('a10') },
   ];
+
+  const faqSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqItems.map((item) => ({
+      '@type': 'Question',
+      name: item.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: item.answer,
+      },
+    })),
+  };
 
   return (
     <section className="relative md:px-12 py-24 bg-background">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <div className="mx-auto max-w-2xl px-4">
         <motion.div
           initial="hidden"
