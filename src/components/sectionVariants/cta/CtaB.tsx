@@ -1,3 +1,5 @@
+'use client';
+
 import { useModal } from '@/providers/ModalProvider';
 import { fadeUp, stagger } from '@/shared/animationVariants';
 import {
@@ -9,6 +11,7 @@ import {
 } from 'framer-motion';
 import posthog from 'posthog-js';
 import { useEffect, useRef } from 'react';
+import { useTranslations } from 'next-intl';
 
 const SUBSCRIPTIONS = [
   { name: 'Netflix', price: '15.99€' },
@@ -35,6 +38,7 @@ function AnimatedCounter({ target }: { target: number }) {
 }
 
 export default function CtaB() {
+  const t = useTranslations('Cta');
   const { openModal } = useModal();
 
   function handleGetApp() {
@@ -68,7 +72,7 @@ export default function CtaB() {
               className="mb-5"
             >
               <span className="inline-block text-xs font-semibold uppercase tracking-widest text-brand-orange/70 border border-brand-orange/20 bg-brand-orange/5 rounded-full px-3 py-1">
-                Did you know?
+                {t('badge')}
               </span>
             </motion.div>
 
@@ -77,11 +81,11 @@ export default function CtaB() {
               custom={1}
               className="text-4xl md:text-5xl font-black tracking-tighter text-white leading-[1.1]"
             >
-              The average person wastes{' '}
+              {t('headlineBefore')}{' '}
               <span className="text-brand-orange">
                 <AnimatedCounter target={312} />€
               </span>{' '}
-              a year on forgotten subscriptions.
+              {t('headlineAfter')}
             </motion.h2>
 
             <motion.p
@@ -89,9 +93,7 @@ export default function CtaB() {
               custom={2}
               className="mt-5 text-white/50 text-base leading-relaxed"
             >
-              That gym you haven't visited since January. The design tool trial
-              you forgot to cancel. The streaming service everyone shares — but
-              you still pay for alone.
+              {t('body')}
             </motion.p>
 
             <motion.p
@@ -99,7 +101,7 @@ export default function CtaB() {
               custom={3}
               className="mt-3 text-white/30 text-sm"
             >
-              TrackBay puts every charge on your radar so nothing slips through.
+              {t('subtext')}
             </motion.p>
           </div>
 
@@ -132,7 +134,7 @@ export default function CtaB() {
 
             {/* Monthly total row */}
             <div className="flex items-center justify-between border-t border-white/8 pt-4 px-1">
-              <span className="text-sm text-white/40">Monthly total</span>
+              <span className="text-sm text-white/40">{t('monthlyTotal')}</span>
               <span className="text-lg font-bold text-white">122.95€</span>
             </div>
 
@@ -141,11 +143,11 @@ export default function CtaB() {
               onClick={handleGetApp}
               className="btn-shimmer w-full inline-flex items-center justify-center gap-2 rounded-xl bg-brand-orange px-6 py-4 text-white font-bold text-base transition-all duration-300 hover:bg-brand-orange-hover hover:shadow-[0_0_36px_var(--orange-glow-lg)] focus:outline-none focus-visible:ring-2 focus-visible:ring-white/70 hover:cursor-pointer"
             >
-              Stop losing money →
+              {t('button')}
             </button>
 
             <p className="text-center text-xs text-white/25">
-              Free · No bank connection required
+              {t('disclaimer')}
             </p>
           </motion.div>
         </div>

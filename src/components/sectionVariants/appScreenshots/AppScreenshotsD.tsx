@@ -9,6 +9,7 @@ import { fadeUp, stagger } from '@/shared/animationVariants';
 import Mockup from '../../../../public/images/app_preview.png';
 import Spending from '../../../../public/images/spending.png';
 import Notification from '../../../../public/images/notification.png';
+import { useTranslations } from 'next-intl';
 
 type Tab = {
   id: string;
@@ -31,56 +32,54 @@ const contentVariants = {
   exit: (dir: number) => ({ opacity: 0, x: dir * -16 }),
 };
 
-const TABS: Tab[] = [
-  {
-    id: 'home',
-    label: 'Home',
-    Icon: Home,
-    title: 'Your monthly overview',
-    description:
-      'See every subscription, bill, and recurring expense in one clear view. No hidden charges, no end-of-month surprises.',
-    image: Mockup,
-    tag: '15 subscriptions tracked',
-    accentText: 'text-brand-purple-light',
-    accentBg: 'bg-brand-purple/15',
-    accentBorder: 'border-brand-purple/40',
-    glowColor: 'rgba(94, 0, 245, 0.15)',
-    dotColor: 'var(--purple-light)',
-  },
-  {
-    id: 'analytics',
-    label: 'Analytics',
-    Icon: BarChart3,
-    title: 'Spending trends at a glance',
-    description:
-      'Understand how your fixed costs evolve month over month. Spot upward trends and identify where to cut back.',
-    image: Spending,
-    tag: '3 months history',
-    accentText: 'text-brand-orange',
-    accentBg: 'bg-brand-orange/15',
-    accentBorder: 'border-brand-orange/40',
-    glowColor: 'rgba(255, 121, 102, 0.12)',
-    dotColor: 'var(--orange)',
-  },
-  {
-    id: 'alerts',
-    label: 'Alerts',
-    Icon: Bell,
-    title: 'Never miss a renewal',
-    description:
-      'Get notified days before a payment hits. Cancel on time, never overpay for something you forgot about.',
-    image: Notification,
-    tag: 'Smart alerts',
-    accentText: 'text-brand-green',
-    accentBg: 'bg-brand-green/10',
-    accentBorder: 'border-brand-green/30',
-    glowColor: 'rgba(0, 250, 217, 0.1)',
-    dotColor: 'var(--green)',
-  },
-];
-
 export default function AppScreenshotsD() {
+  const t = useTranslations('AppScreenshots');
   const [activeIndex, setActiveIndex] = useState(0);
+
+  const TABS: Tab[] = [
+    {
+      id: 'home',
+      label: t('tab1Label'),
+      Icon: Home,
+      title: t('tab1Title'),
+      description: t('tab1Desc'),
+      image: Mockup,
+      tag: t('tab1Tag'),
+      accentText: 'text-brand-purple-light',
+      accentBg: 'bg-brand-purple/15',
+      accentBorder: 'border-brand-purple/40',
+      glowColor: 'rgba(94, 0, 245, 0.15)',
+      dotColor: 'var(--purple-light)',
+    },
+    {
+      id: 'analytics',
+      label: t('tab2Label'),
+      Icon: BarChart3,
+      title: t('tab2Title'),
+      description: t('tab2Desc'),
+      image: Spending,
+      tag: t('tab2Tag'),
+      accentText: 'text-brand-orange',
+      accentBg: 'bg-brand-orange/15',
+      accentBorder: 'border-brand-orange/40',
+      glowColor: 'rgba(255, 121, 102, 0.12)',
+      dotColor: 'var(--orange)',
+    },
+    {
+      id: 'alerts',
+      label: t('tab3Label'),
+      Icon: Bell,
+      title: t('tab3Title'),
+      description: t('tab3Desc'),
+      image: Notification,
+      tag: t('tab3Tag'),
+      accentText: 'text-brand-green',
+      accentBg: 'bg-brand-green/10',
+      accentBorder: 'border-brand-green/30',
+      glowColor: 'rgba(0, 250, 217, 0.1)',
+      dotColor: 'var(--green)',
+    },
+  ];
   const directionRef = useRef(1);
   const current = TABS[activeIndex];
 
@@ -120,11 +119,11 @@ export default function AppScreenshotsD() {
             variants={fadeUp}
             className="text-3xl md:text-4xl font-bold tracking-tight text-white"
           >
-            See TrackBay in action
+            {t('title')}
           </motion.h2>
 
           <motion.p variants={fadeUp} custom={1} className="mt-3 text-white/50">
-            Everything you need, elegantly presented.
+            {t('subtitle')}
           </motion.p>
         </motion.div>
 

@@ -1,10 +1,13 @@
-import Link from 'next/link';
+import { Link } from '@/i18n/navigation';
 import Image from 'next/image';
 import Logo from '../../public/images/logo.png';
 import AppleLogo from '../../public/images/apple-logo.png';
 import GooglePlayLogo from '../../public/images/google-play-logo.png';
+import { getTranslations } from 'next-intl/server';
+import LanguageSwitcher from './LanguageSwitcher';
 
-export default function Footer() {
+export default async function Footer() {
+  const t = await getTranslations('Footer');
   const year = new Date().getUTCFullYear();
 
   return (
@@ -24,9 +27,7 @@ export default function Footer() {
               <span className="font-semibold text-white/80">TrackBay</span>
             </div>
 
-            <p className="text-sm text-white/40">
-              Your subscriptions, under control.
-            </p>
+            <p className="text-sm text-white/40">{t('tagline')}</p>
           </div>
 
           {/* Right: Nav + store badges */}
@@ -36,21 +37,21 @@ export default function Footer() {
                 href="/privacy_policy"
                 className="text-sm text-white/60 hover:text-white/90 transition-colors"
               >
-                Privacy
+                {t('privacy')}
               </Link>
 
               <Link
                 href="/terms"
                 className="text-sm text-white/60 hover:text-white/90 transition-colors"
               >
-                Terms
+                {t('terms')}
               </Link>
 
               <Link
                 href="/contact"
                 className="text-sm text-white/60 hover:text-white/90 transition-colors"
               >
-                Contact
+                {t('contact')}
               </Link>
 
               {/* Separator */}
@@ -58,10 +59,10 @@ export default function Footer() {
 
               {/* Store badges */}
               <div className="flex items-center gap-5">
-                <Link
+                <a
                   href="https://apps.apple.com/fr/app/trackbay/id6751021688"
                   target="_blank"
-                  className="hover:cursor-pointer"
+                  rel="noopener noreferrer"
                 >
                   <Image
                     src={AppleLogo}
@@ -70,12 +71,12 @@ export default function Footer() {
                     height={20}
                     className="opacity-50 hover:opacity-80 transition-opacity"
                   />
-                </Link>
+                </a>
 
-                <Link
+                <a
                   href="https://play.google.com/store/apps/details?id=com.thomasgeslin.trackbay&pli=1"
                   target="_blank"
-                  className="hover:cursor-pointer"
+                  rel="noopener noreferrer"
                 >
                   <Image
                     src={GooglePlayLogo}
@@ -84,17 +85,16 @@ export default function Footer() {
                     height={20}
                     className="opacity-50 hover:opacity-80 transition-opacity"
                   />
-                </Link>
+                </a>
               </div>
             </nav>
           </div>
         </div>
 
         {/* Copyright */}
-        <div className="mt-8 pt-6 border-t border-white/5">
-          <p className="text-xs text-white/30">
-            © {year} TrackBay. All rights reserved.
-          </p>
+        <div className="mt-8 pt-6 border-t border-white/5 flex items-center justify-between">
+          <p className="text-xs text-white/30">{t('copyright', { year })}</p>
+          <LanguageSwitcher />
         </div>
       </div>
     </footer>

@@ -1,6 +1,7 @@
 import { Resend } from 'resend';
-import { redirect } from 'next/navigation';
+import { redirect } from '@/i18n/navigation';
 import { getPostHogClient } from '@/lib/posthog-server';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
 
 export const runtime = 'nodejs'; // Ensure Node runtime for Resend
 
@@ -35,7 +36,13 @@ function FormField({
 }
 
 /* --------------------------------- Page --------------------------------- */
-export default function ContactPage() {
+type Props = { params: Promise<{ locale: string }> };
+
+export default async function ContactPage({ params }: Props) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+  const t = await getTranslations({ locale, namespace: 'Contact' });
+
   async function send(formData: FormData) {
     'use server';
 
@@ -71,7 +78,7 @@ export default function ContactPage() {
     });
     await posthog.shutdown();
 
-    redirect('/contact/success');
+    redirect({ href: '/contact/success', locale });
   }
 
   return (
@@ -79,9 +86,9 @@ export default function ContactPage() {
       <div className="mx-auto max-w-lg">
         <div className="rounded-2xl border border-black/10 bg-background p-6 shadow-lg ring-1 ring-white/5 md:p-8">
           <header className="mb-6">
-            <h1 className="text-2xl font-semibold tracking-tight">Contact</h1>
+            <h1 className="text-2xl font-semibold tracking-tight">{t('heading')}</h1>
             <p className="mt-1 text-sm text-white/60">
-              Send us a message and we’ll get back to you.
+              {t('subheading')}
             </p>
           </header>
 
@@ -106,7 +113,7 @@ export default function ContactPage() {
             </div>
 
             <FormField
-              label="Email"
+              label={t('emailLabel')}
               htmlFor="email"
             >
               <input
@@ -117,13 +124,13 @@ export default function ContactPage() {
                 inputMode="email"
                 autoComplete="email"
                 className="w-full rounded-lg border border-white/10 bg-black/10 px-3 py-2 text-sm placeholder-white/40 outline-none transition focus:border-white/20 focus:ring-4 focus:ring-white/10"
-                placeholder="you@example.com"
+                placeholder={t('emailPlaceholder')}
                 aria-required="true"
               />
             </FormField>
 
             <FormField
-              label="Message"
+              label={t('messageLabel')}
               htmlFor="message"
             >
               <textarea
@@ -132,7 +139,7 @@ export default function ContactPage() {
                 required
                 rows={6}
                 className="w-full resize-y rounded-lg border border-white/10 bg-black/10 px-3 py-2 text-sm placeholder-white/40 outline-none transition focus:border-white/20 focus:ring-4 focus:ring-white/10"
-                placeholder="Write your message here…"
+                placeholder={t('messagePlaceholder')}
                 aria-required="true"
               />
             </FormField>
@@ -141,7 +148,7 @@ export default function ContactPage() {
               type="submit"
               className="group inline-flex w-full items-center justify-center gap-2 rounded-lg border border-white/10 bg-white/5 px-4 py-2 text-sm font-medium transition hover:bg-white hover:text-black focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-white/20 active:scale-[0.99] hover:cursor-pointer"
             >
-              Send
+              {t('submit')}
               <svg
                 aria-hidden="true"
                 viewBox="0 0 24 24"
@@ -159,8 +166,7 @@ export default function ContactPage() {
             </button>
 
             <p className="text-xs text-white/50">
-              We’ll reply from our support address. Make sure to check your spam
-              folder if you don’t see a response soon.
+              {t('disclaimer')}
             </p>
           </form>
         </div>

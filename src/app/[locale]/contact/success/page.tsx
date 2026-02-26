@@ -1,6 +1,13 @@
-import Link from 'next/link';
+import { Link } from '@/i18n/navigation';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
 
-export default function ContactSuccess() {
+type Props = { params: Promise<{ locale: string }> };
+
+export default async function ContactSuccess({ params }: Props) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+  const t = await getTranslations({ locale, namespace: 'ContactSuccess' });
+
   return (
     <main className="flex min-h-screen items-center justify-center px-4">
       <section className="w-full max-w-md">
@@ -28,11 +35,10 @@ export default function ContactSuccess() {
             </span>
 
             <h1 className="mt-4 text-center text-2xl font-semibold tracking-tight">
-              Thanks! 🙌
+              {t('heading')}
             </h1>
             <p className="mt-2 max-w-sm text-center text-sm text-white/70">
-              Your message has been sent successfully. We’ll get back to you as
-              soon as possible.
+              {t('body')}
             </p>
           </div>
 
@@ -45,7 +51,7 @@ export default function ContactSuccess() {
               href="/"
               className="inline-flex items-center justify-center rounded-lg border border-white/10 bg-white/90 px-4 py-2 text-sm font-medium text-black transition hover:bg-white focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-white/30"
             >
-              Go to Home
+              {t('goHome')}
             </Link>
           </div>
         </div>

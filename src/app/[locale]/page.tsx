@@ -1,9 +1,6 @@
-'use client';
-
 import HeroA from '@/components/sectionVariants/hero/HeroA';
 import SocialProof from '@/components/SocialProof';
 import FeatureA from '@/components/sectionVariants/features/FeatureA';
-import HowItWorksE from '@/components/sectionVariants/howItWorks/HowItWorksE';
 import FaqA from '@/components/sectionVariants/faq/FaqA';
 import AppScreenshotsD from '@/components/sectionVariants/appScreenshots/AppScreenshotsD';
 import CtaB from '@/components/sectionVariants/cta/CtaB';

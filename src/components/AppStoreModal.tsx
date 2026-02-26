@@ -8,12 +8,14 @@ import Apple from '../../public/images/apple-logo.png';
 import Google from '../../public/images/google-play-logo.png';
 import Image from 'next/image';
 import posthog from 'posthog-js';
+import { useTranslations } from 'next-intl';
 
 type Props = { onClose: () => void };
 
 const EASE = [0.4, 0, 0.2, 1] as const;
 
 export default function AppStoreModal({ onClose }: Props) {
+  const t = useTranslations('Modal');
   const containerRef = useRef<HTMLDivElement | null>(null);
   const closeBtnRef = useRef<HTMLButtonElement | null>(null);
 
@@ -52,7 +54,7 @@ export default function AppStoreModal({ onClose }: Props) {
       <button
         className="absolute inset-0 bg-black/70"
         onClick={() => handleClose()}
-        aria-label="Close modal"
+        aria-label={t('closeAriaLabel')}
       />
 
       {/* Modal */}
@@ -68,7 +70,7 @@ export default function AppStoreModal({ onClose }: Props) {
           ref={closeBtnRef}
           onClick={() => handleClose()}
           className="absolute right-3 top-3 rounded-md px-2 py-1 text-white/80 hover:text-white focus:outline-none focus:ring-2 focus:ring-white/30 hover:cursor-pointer"
-          aria-label="Close"
+          aria-label={t('closeLabel')}
         >
           ✕
         </button>
@@ -77,10 +79,10 @@ export default function AppStoreModal({ onClose }: Props) {
           id="store-modal-title"
           className="text-xl font-semibold"
         >
-          Get TrackBay
+          {t('title')}
         </h3>
         <p className="mt-1 text-sm text-white/70">
-          Choose your platform to download the app.
+          {t('subtitle')}
         </p>
 
         <div className="mt-5 grid gap-4">
@@ -101,9 +103,9 @@ export default function AppStoreModal({ onClose }: Props) {
             </div>
             <div className="flex-1">
               <div className="text-white font-medium leading-tight">
-                Download on the
+                {t('iosLine1')}
               </div>
-              <div className="text-white/80 text-sm -mt-0.5">App Store</div>
+              <div className="text-white/80 text-sm -mt-0.5">{t('iosLine2')}</div>
             </div>
           </a>
 
@@ -124,9 +126,9 @@ export default function AppStoreModal({ onClose }: Props) {
             </div>
             <div className="flex-1">
               <div className="text-black font-medium leading-tight">
-                Get it on
+                {t('androidLine1')}
               </div>
-              <div className="text-black/70 text-sm -mt-0.5">Google Play</div>
+              <div className="text-black/70 text-sm -mt-0.5">{t('androidLine2')}</div>
             </div>
           </a>
         </div>

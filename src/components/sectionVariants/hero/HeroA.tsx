@@ -1,12 +1,16 @@
+'use client';
+
 import { motion } from 'framer-motion';
-import Link from 'next/link';
+import { Link } from '@/i18n/navigation';
 import Image from 'next/image';
 import { fadeUp, stagger, zoomInSoft } from '@/shared/animationVariants';
 import Mockup from '../../../../public/images/app_preview.png';
 import { useModal } from '@/providers/ModalProvider';
 import posthog from 'posthog-js';
+import { useTranslations } from 'next-intl';
 
-export default function () {
+export default function HeroA() {
+  const t = useTranslations('Hero');
   const { openModal } = useModal();
 
   function handleHeroGetApp() {
@@ -71,7 +75,7 @@ export default function () {
             >
               ✦
             </motion.span>
-            Your subscriptions, finally under control
+            {t('badge')}
           </span>
         </motion.div>
 
@@ -81,12 +85,12 @@ export default function () {
           custom={1}
           className="text-5xl md:text-7xl font-black tracking-tighter text-white leading-[1.05]"
         >
-          Never be{' '}
+          {t('headlineBefore')}{' '}
           <span className="bg-gradient-to-r from-brand-orange to-brand-purple bg-clip-text text-transparent">
-            surprised
+            {t('headlineHighlight')}
           </span>
           <br />
-          by a bill again.
+          {t('headlineAfter')}
         </motion.h1>
 
         {/* Subtitle */}
@@ -95,8 +99,7 @@ export default function () {
           custom={2}
           className="mt-6 text-lg md:text-xl text-white/50 max-w-xl mx-auto"
         >
-          Centralize every fixed expense, get notified before it hits. No bank
-          connection. Just clarity.
+          {t('subtitle')}
         </motion.p>
 
         {/* CTAs */}
@@ -109,14 +112,14 @@ export default function () {
             onClick={handleHeroGetApp}
             className="btn-shimmer relative rounded-xl bg-brand-orange px-6 py-3 text-white font-semibold transition-all duration-300 hover:bg-brand-orange-hover hover:shadow-[0_0_24px_var(--orange-glow-lg)] focus:outline-none focus-visible:ring-2 focus-visible:ring-white/70"
           >
-            Get the app
+            {t('ctaApp')}
           </button>
           <a
             href="#how"
             onClick={handleHeroSeeHow}
             className="rounded-xl px-6 py-3 font-semibold text-white/80 ring-1 ring-white/15 hover:ring-white/30 hover:text-white transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/70"
           >
-            See how it works ↓
+            {t('ctaScroll')}
           </a>
         </motion.div>
 
@@ -126,19 +129,19 @@ export default function () {
           custom={4}
           className="mt-6 text-xs text-white/30"
         >
-          By using TrackBay you agree to our{' '}
+          {t('legalText')}{' '}
           <Link
             href="/terms"
             className="underline underline-offset-2 hover:text-white/60 transition-colors"
           >
-            Terms
+            {t('legalTerms')}
           </Link>{' '}
-          and{' '}
+          {t('legalAnd')}{' '}
           <Link
             href="/privacy_policy"
             className="underline underline-offset-2 hover:text-white/60 transition-colors"
           >
-            Privacy Policy
+            {t('legalPrivacy')}
           </Link>
           .
         </motion.p>

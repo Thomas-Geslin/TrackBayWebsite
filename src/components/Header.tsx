@@ -1,13 +1,16 @@
 'use client';
 
-import Link from 'next/link';
+import { Link } from '@/i18n/navigation';
 import Image from 'next/image';
 import Logo from '../../public/images/logo.png';
 import Apple from '../../public/images/apple-logo.png';
 import GooglePlay from '../../public/images/google-play-logo.png';
 import posthog from 'posthog-js';
+import { useTranslations } from 'next-intl';
 
 export default function Header() {
+  const t = useTranslations('Header');
+
   function handleContact() {
     posthog.capture('header_contact_clicked');
   }
@@ -50,7 +53,7 @@ export default function Header() {
             href="#features"
             className="px-3 py-1.5 text-sm font-medium text-white/60 hover:text-white transition-colors duration-200 focus:outline-none"
           >
-            Features
+            {t('features')}
           </a>
 
           <Link
@@ -58,7 +61,7 @@ export default function Header() {
             onClick={handleContact}
             className="px-3 py-1.5 text-sm font-medium text-white/60 hover:text-white transition-colors duration-200 focus:outline-none"
           >
-            Contact
+            {t('contact')}
           </Link>
 
           {/* Separator */}
@@ -84,7 +87,7 @@ export default function Header() {
               width={14}
               height={14}
             />
-            <span>App Store</span>
+            <span>{t('appStore')}</span>
           </a>
 
           {/* Android — same language, slightly warmer */}
@@ -108,7 +111,7 @@ export default function Header() {
               height={14}
               className="opacity-90"
             />
-            <span>Google Play</span>
+            <span>{t('googlePlay')}</span>
           </a>
         </nav>
 

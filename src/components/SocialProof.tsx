@@ -1,7 +1,11 @@
+'use client';
+
 import { fadeUp } from '@/shared/animationVariants';
 import { motion } from 'framer-motion';
+import { useTranslations } from 'next-intl';
 
 export default function SocialProof() {
+  const t = useTranslations('SocialProof');
   return (
     <motion.section
       initial="hidden"
@@ -15,20 +19,20 @@ export default function SocialProof() {
         <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-10">
           <div className="flex items-center gap-2">
             <span className="text-white font-semibold">⭐ 4.8 / 5</span>
-            <span className="text-white/50 text-sm">App Store</span>
+            <span className="text-white/50 text-sm">{t('ratingLabel')}</span>
           </div>
 
           <div className="w-px h-6 bg-white/10 hidden sm:block" />
 
           <div className="flex items-center gap-2">
-            <span className="text-white font-semibold">500+</span>
-            <span className="text-white/50 text-sm">utilisateurs</span>
+            <span className="text-white font-semibold">{t('usersCount')}</span>
+            <span className="text-white/50 text-sm">{t('usersLabel')}</span>
           </div>
 
           <div className="w-px h-6 bg-white/10 hidden sm:block" />
 
           <div className="flex items-center gap-2">
-            <span className="text-white font-semibold">iOS & Android</span>
+            <span className="text-white font-semibold">{t('platforms')}</span>
           </div>
         </div>
       </div>

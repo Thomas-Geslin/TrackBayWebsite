@@ -1,32 +1,12 @@
+'use client';
+
 import { fadeUp, stagger } from '@/shared/animationVariants';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Minus, Plus } from 'lucide-react';
 import { useState } from 'react';
+import { useTranslations } from 'next-intl';
 
-const faqItems = [
-  {
-    q: 'Est-ce que TrackBay accède à mon compte bancaire ?',
-    a: 'Non, jamais. Vous entrez vos abonnements manuellement. Pas de connexion bancaire, pas de données financières partagées.',
-  },
-  {
-    q: "L'app est-elle gratuite ?",
-    a: 'Oui, TrackBay est gratuit.',
-  },
-  {
-    q: 'Disponible sur iOS et Android ?',
-    a: "Oui, disponible sur l'App Store et Google Play.",
-  },
-  {
-    q: 'Mes données sont-elles en sécurité ?',
-    a: 'Vos données sont chiffrées et stockées de façon sécurisée. Nous ne les vendons jamais.',
-  },
-  {
-    q: 'Comment fonctionnent les rappels ?',
-    a: 'Vous recevez une notification push 2 jours avant chaque date de prélèvement configurée.',
-  },
-];
-
-function FAQItem({ q, a }: { q: string; a: string }) {
+function FAQItem({ question, answer }: { question: string; answer: string }) {
   const [open, setOpen] = useState(false);
 
   return (
@@ -36,8 +16,9 @@ function FAQItem({ q, a }: { q: string; a: string }) {
         className="w-full py-5 flex justify-between items-center text-left gap-4 group focus:outline-none hover:cursor-pointer"
       >
         <span className="font-medium text-white/80 group-hover:text-white transition-colors duration-150">
-          {q}
+          {question}
         </span>
+        
         <span className="flex-shrink-0 text-white/40 group-hover:text-white/70 transition-colors duration-150">
           {open ? <Minus size={16} /> : <Plus size={16} />}
         </span>
@@ -53,7 +34,9 @@ function FAQItem({ q, a }: { q: string; a: string }) {
             transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
             className="overflow-hidden"
           >
-            <p className="pb-5 text-sm text-white/60 leading-relaxed">{a}</p>
+            <p className="pb-5 text-sm text-white/60 leading-relaxed">
+              {answer}
+            </p>
           </motion.div>
         )}
       </AnimatePresence>
@@ -62,6 +45,16 @@ function FAQItem({ q, a }: { q: string; a: string }) {
 }
 
 export default function FaqA() {
+  const t = useTranslations('Faq');
+
+  const faqItems = [
+    { question: t('q1'), answer: t('a1') },
+    { question: t('q2'), answer: t('a2') },
+    { question: t('q3'), answer: t('a3') },
+    { question: t('q4'), answer: t('a4') },
+    { question: t('q5'), answer: t('a5') },
+  ];
+
   return (
     <section className="relative md:px-12 py-24 bg-background">
       <div className="mx-auto max-w-2xl px-4">
@@ -76,14 +69,15 @@ export default function FaqA() {
             variants={fadeUp}
             className="text-3xl md:text-4xl font-bold tracking-tight text-white"
           >
-            Everything you need to know
+            {t('title')}
           </motion.h2>
+
           <motion.p
             variants={fadeUp}
             custom={1}
             className="mt-3 text-white/50"
           >
-            Questions fréquentes sur TrackBay.
+            {t('subtitle')}
           </motion.p>
         </motion.div>
 
@@ -95,9 +89,9 @@ export default function FaqA() {
         >
           {faqItems.map((faq) => (
             <FAQItem
-              key={faq.q}
-              q={faq.q}
-              a={faq.a}
+              key={faq.question}
+              question={faq.question}
+              answer={faq.answer}
             />
           ))}
         </motion.div>

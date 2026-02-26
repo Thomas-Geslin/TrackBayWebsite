@@ -1,6 +1,9 @@
+'use client';
+
 import { fadeUp, item, stagger } from '@/shared/animationVariants';
 import { motion } from 'framer-motion';
 import { BarChart3, Bell, Shield } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 
 type FeatureIcon = 'bar' | 'bell' | 'shield';
 
@@ -52,6 +55,7 @@ function Feature({
 }
 
 export default function FeatureA() {
+  const t = useTranslations('Features');
   return (
     <section
       id="features"
@@ -72,19 +76,18 @@ export default function FeatureA() {
           className="text-center mb-12"
         >
           <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-white">
-            Everything in one place
+            {t('title')}
           </h2>
           <p className="mt-3 text-white/50">
-            No complexity. No bank connection. Just your subscriptions,
-            organized.
+            {t('subtitle')}
           </p>
         </motion.div>
 
         <div className="grid gap-4 md:grid-cols-3">
           <Feature
             icon="bar"
-            title="One clear monthly total"
-            desc="See all your fixed expenses in one place — rent, bills, insurance, subscriptions."
+            title={t('card1Title')}
+            desc={t('card1Desc')}
             accentColor={{
               bg: 'bg-brand-orange/15',
               text: 'text-brand-orange',
@@ -95,8 +98,8 @@ export default function FeatureA() {
 
           <Feature
             icon="bell"
-            title="Smart reminders"
-            desc="Get notified before due dates so you never miss a payment again."
+            title={t('card2Title')}
+            desc={t('card2Desc')}
             accentColor={{
               bg: 'bg-brand-purple/15',
               text: 'text-brand-purple-light',
@@ -107,8 +110,8 @@ export default function FeatureA() {
 
           <Feature
             icon="shield"
-            title="Private by design"
-            desc="No bank connection required. Just email & name. Data stays under your control."
+            title={t('card3Title')}
+            desc={t('card3Desc')}
             accentColor={{
               bg: 'bg-teal-500/15',
               text: 'text-teal-400',
