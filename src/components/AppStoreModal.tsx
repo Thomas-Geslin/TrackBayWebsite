@@ -90,7 +90,10 @@ export default function AppStoreModal({ onClose }: Props) {
             target="_blank"
             rel="noopener noreferrer"
             onClick={() =>
-              posthog.capture('app_store_download_clicked', { platform: 'ios' })
+              posthog.capture('app_download_link_clicked', {
+                platform: 'ios',
+                location: 'modal',
+              })
             }
             className="group flex items-center gap-3 rounded-xl border border-white/10 bg-black px-4 py-3 hover:border-white/25"
           >
@@ -118,8 +121,9 @@ export default function AppStoreModal({ onClose }: Props) {
             target="_blank"
             rel="noopener noreferrer"
             onClick={() =>
-              posthog.capture('google_play_download_clicked', {
+              posthog.capture('app_download_link_clicked', {
                 platform: 'android',
+                location: 'modal',
               })
             }
             className="group flex items-center gap-3 rounded-xl border border-black/10 bg-white px-4 py-3 hover:border-black/20"

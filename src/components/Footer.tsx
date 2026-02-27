@@ -1,13 +1,16 @@
+'use client'
+
 import { Link } from '@/i18n/navigation';
 import Image from 'next/image';
 import Logo from '../../public/images/logo.jpg';
 import AppleLogo from '../../public/images/apple-logo.png';
 import GooglePlayLogo from '../../public/images/google-play-logo.png';
-import { getTranslations } from 'next-intl/server';
 import LanguageSwitcher from './LanguageSwitcher';
+import posthog from 'posthog-js';
+import { useTranslations } from 'next-intl';
 
-export default async function Footer() {
-  const t = await getTranslations('Footer');
+export default function Footer() {
+  const t = useTranslations('Footer');
   const year = new Date().getUTCFullYear();
 
   return (
@@ -65,6 +68,12 @@ export default async function Footer() {
                   href="https://apps.apple.com/fr/app/trackbay/id6751021688"
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={() =>
+                    posthog.capture('app_download_link_clicked', {
+                      platform: 'ios',
+                      location: 'footer',
+                    })
+                  }
                 >
                   <Image
                     src={AppleLogo}
@@ -79,6 +88,12 @@ export default async function Footer() {
                   href="https://play.google.com/store/apps/details?id=com.thomasgeslin.trackbay&pli=1"
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={() =>
+                    posthog.capture('app_download_link_clicked', {
+                      platform: 'android',
+                      location: 'footer',
+                    })
+                  }
                 >
                   <Image
                     src={GooglePlayLogo}

@@ -73,7 +73,7 @@ export default function Header() {
             target="_blank"
             rel="noopener noreferrer"
             onClick={() =>
-              posthog.capture('app_store_download_clicked', {
+              posthog.capture('app_download_link_clicked', {
                 platform: 'ios',
                 location: 'header',
               })
@@ -96,7 +96,7 @@ export default function Header() {
             target="_blank"
             rel="noopener noreferrer"
             onClick={() =>
-              posthog.capture('google_play_download_clicked', {
+              posthog.capture('app_download_link_clicked', {
                 platform: 'android',
                 location: 'header',
               })
@@ -122,7 +122,7 @@ export default function Header() {
             target="_blank"
             rel="noopener noreferrer"
             onClick={() =>
-              posthog.capture('app_store_download_clicked', {
+              posthog.capture('app_download_link_clicked', {
                 platform: 'ios',
                 location: 'header',
               })
@@ -145,7 +145,7 @@ export default function Header() {
             target="_blank"
             rel="noopener noreferrer"
             onClick={() =>
-              posthog.capture('google_play_download_clicked', {
+              posthog.capture('app_download_link_clicked', {
                 platform: 'android',
                 location: 'header',
               })
