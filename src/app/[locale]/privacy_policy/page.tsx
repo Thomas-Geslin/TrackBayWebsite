@@ -20,14 +20,19 @@ export default async function PrivacyPolicy({ params }: Props) {
     [t('s10Title'), t('s10Content')],
     [t('s11Title'), t('s11Content')],
     [t('s12Title'), t('s12Content')],
+    [t('s14Title'), t('s14Content')],
+    [t('s15Title'), t('s15Content')],
     [t('s13Title'), t('s13Content')],
   ] as const;
 
   return (
     <div className="mt-30 mx-auto max-w-6xl px-12">
-      <h1 className="text-center text-4xl font-bold mb-32">
+      <h1 className="text-center text-4xl font-bold mb-4">
         {t('pageTitle')}
       </h1>
+      <p className="text-center text-sm text-white/60 mb-32">
+        {t('lastUpdated')}
+      </p>
 
       {sections.map(([title, content]) => (
         <div

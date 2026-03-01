@@ -130,8 +130,9 @@
   },
   "Privacy": {
     "pageTitle": "TrackBay — Privacy Policy",
+    "lastUpdated": "March 1, 2026",
     "s1Title": "Interpretation and Definitions",
-    "s1Content": "Definitions include Account, Affiliate, Application, Company, Country, Device, Personal Data, Service, Service Provider, Usage Data, You.",
+    "s1Content": "The data controller responsible for your personal data is Thomas Geslin, based in France (contact: thomas.geslin31@gmail.com). Definitions include Account, Affiliate, Application, Company, Country, Device, Personal Data, Service, Service Provider, Usage Data, You.",
     "s2Title": "Collecting and Using Your Personal Data",
     "s2Content": "Types of Data Collected include Personal Data (email, first and last name, usage data) and Usage Data (device identifiers, IP, browser, app usage).",
     "s3Title": "Use of Your Personal Data",
@@ -149,13 +150,17 @@
     "s9Title": "Children's Privacy",
     "s9Content": "Our service is not directed to children under 13. We do not knowingly collect data from children. Parents may contact us to remove data.",
     "s10Title": "Your Rights Under GDPR and CCPA",
-    "s10Content": "EEA: Right to access, update, delete, restrict, object, data portability, complaint. California: Right to know, request deletion, opt out of sale. We do not sell personal data.",
+    "s10Content": "EEA: Right to access, update, delete, restrict, object, data portability, complaint. You may also lodge a complaint with your national supervisory authority — in France, the CNIL (cnil.fr). California: Right to know, request deletion, opt out of sale. We do not sell personal data.",
     "s11Title": "Links to Other Websites",
     "s11Content": "Our Service may contain links to external websites. We are not responsible for third-party practices.",
     "s12Title": "Changes to this Privacy Policy",
     "s12Content": "We may update this Privacy Policy and will notify users via email and/or in-app notice.",
     "s13Title": "Contact Us",
-    "s13Content": "If you have questions: Visit https://trackbayapp.com/contact or email thomas.geslin31@gmail.com"
+    "s13Content": "If you have questions: Visit https://trackbayapp.com/contact or email thomas.geslin31@gmail.com",
+    "s14Title": "Third-Party Service Providers",
+    "s14Content": "We work with trusted third-party service providers who may receive your personal data to help us operate and improve TrackBay. Supabase (supabase.com/privacy) acts as our backend and stores all personal data including your email address, name, and subscription information. PostHog (posthog.com/privacy) receives your email address as a user identifier, along with in-app usage events, to help us understand how TrackBay is used and improve the product. RevenueCat (revenuecat.com/privacy) receives your email address, app user ID, and subscription or purchase data to manage in-app subscriptions and entitlements. Sentry (sentry.io/privacy) receives device information, operating system version, crash logs, and stack traces — and may include your email address when linked to an error report — to help us detect and fix issues. In-app purchases are processed by Apple (App Store) or Google (Google Play), each subject to their own privacy policies.",
+    "s15Title": "Legal Basis for Processing (GDPR)",
+    "s15Content": "If you are located in the European Economic Area, we process your personal data under the following legal bases as required by GDPR Article 6. Account creation and service delivery: performance of a contract (Art. 6(1)(b)). Product analytics via PostHog and error monitoring via Sentry: legitimate interests in improving and maintaining a stable service (Art. 6(1)(f)). Push notification reminders: your consent, which you may withdraw at any time via your device settings (Art. 6(1)(a)). Subscription management via RevenueCat: performance of a contract (Art. 6(1)(b)). Compliance with legal obligations: legal obligation (Art. 6(1)(c))."
   },
   "Terms": {
     "pageTitle": "Terms of Use",
@@ -180,6 +185,16 @@
     "s7Content": "We may update these Terms from time to time. Continued use of the app after changes means you accept the updated Terms.",
     "s8Title": "Governing Law",
     "s8Content": "These Terms are governed by the laws of France. Courts of France have exclusive jurisdiction.",
+    "s9Title": "Intellectual Property",
+    "s9Content": "TrackBay, including its name, logo, design, features, and source code, is owned by Thomas Geslin and is protected by applicable intellectual property laws. You are granted a limited, personal, non-commercial, non-transferable licence to use the app. You may not copy, modify, distribute, reverse engineer, or create derivative works from any part of TrackBay without prior written consent.",
+    "s10Title": "Subscriptions & In-App Purchases",
+    "s10Content": "TrackBay offers optional premium features through in-app purchases. All billing is processed by Apple (App Store) or Google (Google Play) and is subject to their respective terms and refund policies. We do not handle payment information directly. Subscriptions renew automatically unless cancelled in your device's subscription settings before the renewal date. Cancelling a subscription does not entitle you to a refund for the current billing period.",
+    "s11Title": "Account & Eligibility",
+    "s11Content": "You must be at least 13 years old (or the minimum age required in your country) to use TrackBay. You are responsible for keeping your account credentials secure and for all activity that occurs under your account. You may only hold one account per person.",
+    "s12Title": "Your Data",
+    "s12Content": "You retain ownership of all data you enter into TrackBay, such as subscription details and profile information. By using the app, you grant us a limited licence to store and process this data solely to provide the service. We do not use your personal data for advertising or sell it to third parties.",
+    "s13Title": "General Provisions",
+    "s13Content": "If any provision of these Terms is found to be invalid or unenforceable, the remaining provisions will continue in full force. Our failure to enforce any right or provision shall not constitute a waiver of that right. These Terms, together with our Privacy Policy, constitute the entire agreement between you and TrackBay regarding your use of the app.",
     "footerBefore": "If you have questions about these Terms, please",
     "footerLink": "contact us"
   }

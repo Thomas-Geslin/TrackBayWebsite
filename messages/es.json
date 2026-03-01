@@ -130,8 +130,9 @@
   },
   "Privacy": {
     "pageTitle": "TrackBay — Política de privacidad",
+    "lastUpdated": "1 de marzo de 2026",
     "s1Title": "Interpretación y definiciones",
-    "s1Content": "Las definiciones incluyen Cuenta, Afiliado, Aplicación, Empresa, País, Dispositivo, Datos personales, Servicio, Proveedor de servicios, Datos de uso, Usted.",
+    "s1Content": "El responsable del tratamiento de sus datos personales es Thomas Geslin, con domicilio en Francia (contacto: thomas.geslin31@gmail.com). Las definiciones incluyen Cuenta, Afiliado, Aplicación, Empresa, País, Dispositivo, Datos personales, Servicio, Proveedor de servicios, Datos de uso, Usted.",
     "s2Title": "Recopilación y uso de sus datos personales",
     "s2Content": "Los tipos de datos recopilados incluyen Datos personales (correo electrónico, nombre y apellidos, datos de uso) y Datos de uso (identificadores de dispositivo, IP, navegador, uso de la aplicación).",
     "s3Title": "Uso de sus datos personales",
@@ -149,13 +150,17 @@
     "s9Title": "Privacidad de los menores",
     "s9Content": "Nuestro servicio no está dirigido a menores de 13 años. No recopilamos conscientemente datos de menores. Los padres pueden contactarnos para eliminar datos.",
     "s10Title": "Sus derechos bajo el RGPD y la CCPA",
-    "s10Content": "EEE: Derecho de acceso, actualización, supresión, restricción, oposición, portabilidad de datos, reclamación. California: Derecho a saber, solicitar la eliminación, optar por no vender. No vendemos datos personales.",
+    "s10Content": "EEE: Derecho de acceso, actualización, supresión, restricción, oposición, portabilidad de datos, reclamación. También puede presentar una reclamación ante la autoridad de control nacional — en Francia, la CNIL (cnil.fr). California: Derecho a saber, solicitar la eliminación, optar por no vender. No vendemos datos personales.",
     "s11Title": "Enlaces a otros sitios web",
     "s11Content": "Nuestro Servicio puede contener enlaces a sitios externos. No somos responsables de las prácticas de terceros.",
     "s12Title": "Cambios en esta política de privacidad",
     "s12Content": "Podemos actualizar esta Política de privacidad y notificaremos a los usuarios por correo electrónico y/o aviso en la aplicación.",
     "s13Title": "Contáctenos",
-    "s13Content": "Si tiene preguntas: Visite https://trackbayapp.com/contact o envíe un correo a thomas.geslin31@gmail.com"
+    "s13Content": "Si tiene preguntas: Visite https://trackbayapp.com/contact o envíe un correo a thomas.geslin31@gmail.com",
+    "s14Title": "Proveedores de servicios de terceros",
+    "s14Content": "Trabajamos con proveedores de servicios de terceros de confianza que pueden recibir sus datos personales para ayudarnos a operar y mejorar TrackBay. Supabase (supabase.com/privacy) actúa como nuestro backend y almacena todos los datos personales, incluida su dirección de correo electrónico, nombre e información de suscripción. PostHog (posthog.com/privacy) recibe su dirección de correo electrónico como identificador de usuario, junto con eventos de uso dentro de la aplicación, para ayudarnos a comprender cómo se usa TrackBay y mejorar el producto. RevenueCat (revenuecat.com/privacy) recibe su dirección de correo electrónico, el ID de usuario de la aplicación y los datos de suscripción o compra para gestionar las suscripciones y derechos dentro de la aplicación. Sentry (sentry.io/privacy) recibe información del dispositivo, la versión del sistema operativo, registros de fallos y seguimientos de pila — y puede incluir su dirección de correo electrónico cuando está vinculada a un informe de error — para ayudarnos a detectar y corregir problemas. Las compras dentro de la aplicación son procesadas por Apple (App Store) o Google (Google Play), cada uno sujeto a sus propias políticas de privacidad.",
+    "s15Title": "Base jurídica del tratamiento (RGPD)",
+    "s15Content": "Si se encuentra en el Espacio Económico Europeo, tratamos sus datos personales bajo las siguientes bases jurídicas según el Artículo 6 del RGPD. Creación de cuenta y prestación del servicio: ejecución de un contrato (Art. 6(1)(b)). Análisis de producto mediante PostHog y supervisión de errores mediante Sentry: interés legítimo en mejorar y mantener un servicio estable (Art. 6(1)(f)). Notificaciones push de recordatorio: su consentimiento, que puede retirar en cualquier momento a través de la configuración de su dispositivo (Art. 6(1)(a)). Gestión de suscripciones mediante RevenueCat: ejecución de un contrato (Art. 6(1)(b)). Cumplimiento de obligaciones legales: obligación legal (Art. 6(1)(c))."
   },
   "Terms": {
     "pageTitle": "Términos de uso",
@@ -180,6 +185,16 @@
     "s7Content": "Podemos actualizar estos Términos ocasionalmente. El uso continuado de la aplicación tras los cambios implica la aceptación de los Términos actualizados.",
     "s8Title": "Ley aplicable",
     "s8Content": "Estos Términos se rigen por las leyes de Francia. Los tribunales de Francia tienen jurisdicción exclusiva.",
+    "s9Title": "Propiedad intelectual",
+    "s9Content": "TrackBay, incluidos su nombre, logotipo, diseño, funcionalidades y código fuente, es propiedad de Thomas Geslin y está protegido por las leyes de propiedad intelectual aplicables. Se le otorga una licencia limitada, personal, no comercial e intransferible para utilizar la aplicación. No puede copiar, modificar, distribuir, realizar ingeniería inversa ni crear obras derivadas de ninguna parte de TrackBay sin consentimiento previo por escrito.",
+    "s10Title": "Suscripciones y compras integradas",
+    "s10Content": "TrackBay ofrece funciones premium opcionales a través de compras integradas en la aplicación. Toda la facturación es procesada por Apple (App Store) o Google (Google Play) y está sujeta a sus respectivos términos y políticas de reembolso. No gestionamos información de pago directamente. Las suscripciones se renuevan automáticamente a menos que las cancele en los ajustes de suscripción de su dispositivo antes de la fecha de renovación. La cancelación de una suscripción no le da derecho a un reembolso por el período de facturación en curso.",
+    "s11Title": "Cuenta y elegibilidad",
+    "s11Content": "Debe tener al menos 13 años (o la edad mínima requerida en su país) para utilizar TrackBay. Es responsable de mantener la seguridad de sus credenciales de cuenta y de toda la actividad que ocurra en su cuenta. Solo puede tener una cuenta por persona.",
+    "s12Title": "Sus datos",
+    "s12Content": "Usted conserva la propiedad de todos los datos que introduce en TrackBay, como detalles de suscripciones e información de perfil. Al usar la aplicación, nos otorga una licencia limitada para almacenar y procesar estos datos únicamente con el fin de prestar el servicio. No utilizamos sus datos personales con fines publicitarios ni los vendemos a terceros.",
+    "s13Title": "Disposiciones generales",
+    "s13Content": "Si alguna disposición de estos Términos se considera inválida o inaplicable, las disposiciones restantes continuarán en plena vigencia. El hecho de que no hagamos valer algún derecho o disposición no constituirá una renuncia a dicho derecho. Estos Términos, junto con nuestra Política de privacidad, constituyen el acuerdo completo entre usted y TrackBay con respecto al uso de la aplicación.",
     "footerBefore": "Si tiene preguntas sobre estos Términos, por favor",
     "footerLink": "contáctenos"
   }

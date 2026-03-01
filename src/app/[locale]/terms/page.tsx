@@ -105,7 +105,42 @@ export default async function Terms({ params }: Props) {
           </li>
 
           <li>
-            <SectionHeading index={8}>{t('s8Title')}</SectionHeading>
+            <SectionHeading index={8}>{t('s9Title')}</SectionHeading>
+            <div className="mt-3 text-base leading-relaxed">
+              <p>{t('s9Content')}</p>
+            </div>
+          </li>
+
+          <li>
+            <SectionHeading index={9}>{t('s10Title')}</SectionHeading>
+            <div className="mt-3 text-base leading-relaxed">
+              <p>{t('s10Content')}</p>
+            </div>
+          </li>
+
+          <li>
+            <SectionHeading index={10}>{t('s11Title')}</SectionHeading>
+            <div className="mt-3 text-base leading-relaxed">
+              <p>{t('s11Content')}</p>
+            </div>
+          </li>
+
+          <li>
+            <SectionHeading index={11}>{t('s12Title')}</SectionHeading>
+            <div className="mt-3 text-base leading-relaxed">
+              <p>{t('s12Content')}</p>
+            </div>
+          </li>
+
+          <li>
+            <SectionHeading index={12}>{t('s13Title')}</SectionHeading>
+            <div className="mt-3 text-base leading-relaxed">
+              <p>{t('s13Content')}</p>
+            </div>
+          </li>
+
+          <li>
+            <SectionHeading index={13}>{t('s8Title')}</SectionHeading>
             <div className="mt-3 text-base leading-relaxed">
               <p>{t('s8Content')}</p>
             </div>
