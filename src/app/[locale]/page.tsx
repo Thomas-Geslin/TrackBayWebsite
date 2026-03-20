@@ -12,7 +12,7 @@ export default function HomePage() {
       <HeroA />
 
       {/* ===== SOCIAL PROOF STRIP ===== */}
-      <SocialProof />
+      {/* <SocialProof /> */}
 
       {/* ===== FEATURES ===== */}
       <FeatureA />
