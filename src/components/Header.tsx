@@ -11,10 +11,6 @@ import { useTranslations } from 'next-intl';
 export default function Header() {
   const t = useTranslations('Header');
 
-  function handleContact() {
-    posthog.capture('header_contact_clicked');
-  }
-
   return (
     <header className="fixed inset-x-3 sm:inset-x-6 top-3 sm:top-4 z-50 mx-auto max-w-6xl">
       <div
@@ -49,24 +45,6 @@ export default function Header() {
 
         {/* Desktop nav */}
         <nav className="hidden sm:flex items-center gap-2">
-          <a
-            href="#features"
-            className="px-3 py-1.5 text-sm font-medium text-white/60 hover:text-white transition-colors duration-200 focus:outline-none"
-          >
-            {t('features')}
-          </a>
-
-          <Link
-            href="/contact"
-            onClick={handleContact}
-            className="px-3 py-1.5 text-sm font-medium text-white/60 hover:text-white transition-colors duration-200 focus:outline-none"
-          >
-            {t('contact')}
-          </Link>
-
-          {/* Separator */}
-          <div className="w-px h-4 bg-white/10 mx-1" />
-
           {/* iOS — Raycast-style dark pill */}
           <a
             href="https://apps.apple.com/fr/app/trackbay/id6751021688"
